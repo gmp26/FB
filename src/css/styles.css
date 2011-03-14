@@ -1,0 +1,146 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace fb "org.maths.FB.components.*";
+@namespace fbskins "org.maths.FB.skins.*";
+
+
+/* SPARK COMPONENTS */
+
+@font-face {
+	src: url("/assets/Arial Rounded Bold.ttf");
+	fontFamily: CellFont;
+	fontWeight: normal;
+	embedAsCFF: true;
+}
+
+fbskins|ToggleCellSkin s|Label, fbskins|HeaderCellSkin s|Label {
+	fontFamily: CellFont;
+	fontSize: 45px;
+}
+
+
+
+/*
+s|Button 
+{
+	skinClass: ClassReference("com.dgrigg.skins.ButtonSkin");
+	cornerRadius:20px;
+}
+
+s|Button s|Label 
+{
+	color: #ffffff;
+	font-size:36px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+s|DropDownList
+{
+	fontSize:16px;
+}
+
+s|RichEditableText 
+{
+	fontSize:30px;
+}
+
+s|RichText 
+{
+	fontSize:30px;
+}
+
+
+s|List 
+{
+	fontSize:36px;
+	skinClass: ClassReference("com.dgrigg.skins.ListSkin");
+}
+
+s|TextArea
+{
+	fontSize:36px;
+}
+
+s|TextInput 
+{
+	fontSize:36px;
+}
+
+
+s|List
+{*/
+	/*
+	contentBackgroundAlpha:1;
+	contentBackgroundColor: #ffffff;
+	color:#000000;
+	rollOverColor: #CEDBEF;
+ 	*/
+/*}
+
+s|TabBar s|Label 
+{
+	fontSize:36px;
+}
+
+.FormLabelStyle
+{
+	fontWeight:bold;
+	fontSize:30px;
+	color: #000000;
+}
+
+
+s|TextInput 
+{
+	fontSize:36px;
+}
+
+s|TextArea
+{
+	fontSize:36px;
+}
+
+dgrigg|SwipeScroller 
+{
+	skinClass: ClassReference("com.dgrigg.skins.SwipeScrollerSkin");
+}
+
+
+dgrigg|SwipeList 
+{
+	skinClass: ClassReference("com.dgrigg.skins.SwipeListSkin");
+}
+
+
+dgrigg|SwipeList s|Label 
+{
+	font-size:36px;
+}
+
+
+dgrigg|ModalSwipeList
+{
+	skinClass: ClassReference("com.dgrigg.skins.ModalSwipeListSkin");
+}
+
+dgrigg|SelectField
+{
+	skinClass: ClassReference("com.dgrigg.skins.SelectFieldSkin");
+}
+
+dgrigg|SelectField s|TextInput 
+{
+}
+
+*/
+
+
+
+
+
+
+

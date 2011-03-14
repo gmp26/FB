@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="600" height="300" xmlns:views="org.maths.FB.views.*" xmlns:components="org.maths.FB.components.*">
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:SolidColorStroke id="lineStroke" weight="4" color="0xCCCCCC"/>
+	</fx:Declarations>
+	
+	<s:VGroup x="50" y="60" gap="15">
+		<s:HGroup id="rowHeader" gap="15"/>
+		<s:HGroup gap="10" verticalAlign="top">
+			<s:VGroup id="columnHeader" gap="0"/>
+			<views:TimesTable/>
+		</s:HGroup>
+	</s:VGroup>
+	<s:Line id="topLine" x="20" y="161" stroke="{lineStroke}" width="580"/>
+	<s:Line id="sideLine" y="30" x="149" stroke="{lineStroke}" height="580"/>
+
+</s:Group>

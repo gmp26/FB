@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="Home"
+		actionBarVisible = "false" 
+		xmlns:local="*" 
+		xmlns:components="org.maths.FB.components.*" 
+		xmlns:views="org.maths.FB.views.*"
+		>
+
+	<components:ScaledGroup width="100%" height="100%">
+
+		<s:HGroup width="100%" height="100%">
+			<views:SidePanel width="240" height="100%" left="5" top="5" right="5" bottom="5"/>
+			<s:Group width="50"/>
+			<views:MainPanel width="100%" height="100%"/>
+		</s:HGroup>
+	
+	</components:ScaledGroup>
+	
+</s:View>

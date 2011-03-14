@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:DataGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			 xmlns:s="library://ns.adobe.com/flex/spark" 
+			 xmlns:mx="library://ns.adobe.com/flex/mx" 
+			 width="400" height="300"
+			 itemRenderer="org.maths.FB.renderers.IntegerProduct"
+			 hasFocusableChildren="true"
+			 mouseEnabled="false"
+			 rollOverColor="0xffffff"
+			 >
+	
+	<s:layout>
+		<s:TileLayout requestedColumnCount="{requestedColumnCount}" requestedRowCount="{requestedRowCount}" />
+	</s:layout>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<fx:int id="requestedColumnCount"/>
+		<fx:int id="requestedRowCount"/>
+	</fx:Declarations>
+	
+</s:DataGroup>

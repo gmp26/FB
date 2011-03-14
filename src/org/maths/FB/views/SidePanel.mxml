@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:views="org.maths.FB.views.*"
+		 width="200" height="450" xmlns:components="org.maths.FB.components.*"
+		 >
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="State1"/>
+		<s:State name="teacher"/>
+	</s:states>
+	
+	<fx:Declarations>
+		<s:SolidColor id="sideFill" color="0x000000"/>
+	</fx:Declarations>
+	
+	<s:Rect width="100%" height="100%" fill="{sideFill}"/>
+	<s:Group width="100%" height="100%">
+		<s:VGroup  left="5" right="5" top="5" bottom="5" >
+			<components:FullScreenButton width="100%"/>
+			<s:Button id="level1Button" label="level 1" width="100%" height="60" label.teacher="New problem" label.State1="New level 1"/>
+			<s:Button id="level2Button" label="New level 2" width="100%" height="60" includeIn="State1"/>
+			<s:Button id="level3Button" label="New level 3" width="100%" height="60" includeIn="State1"/>
+			<s:Group height="10%"/>
+			<s:Label id="domainLabel"  fontSize="16" width="100%" textAlign="center" />
+			<s:Group height="10%"/>
+			<s:Label id="dragHelp" fontSize="16" width="100%" textAlign="center" />
+			<s:Group height="50%"/>
+			<s:Label id="revealCount" fontSize="40" width="100%" textAlign="center"/>
+			<s:Label id="countLabel" fontSize="16" width="100%" textAlign="center"/>
+			<s:Group height="50%"/>
+			<s:Button id="revealButton" label="Reveal"
+					  width="100%" height="60" label.State1="Reveal all"/>
+		</s:VGroup>
+	</s:Group>
+	
+</s:Group>
