@@ -20,6 +20,5 @@
 		<s:State name="down"/>
 		<s:State name="disabled"/>
 	</s:states>
-	
 
 </s:ToggleButton>

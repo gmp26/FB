@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:components="org.maths.FB.components.*"
+		title="Introduction" 
+		>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+
+	<s:actionContent>
+		<s:Button id="skipButton" label="skip" /> 
+	</s:actionContent>
+	
+	<s:VGroup horizontalAlign="center" width="100%" height="100%">
+		<s:VGroup paddingTop="40" paddingBottom="40" horizontalAlign="center">
+			<s:Label text="Work out"/>
+			<s:Label text="the numbers in green"/>
+			<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+			<s:Group height="30"/>
+			<s:Label text="by revealing as few"/>
+			<s:Label text="hidden answers"/>
+			
+			<s:TileGroup>
+				<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="x" enabled="false"/>
+				<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+				<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+				<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+				<s:ToggleButton skinClass="org.maths.FB.skins.ToggleCellSkin" label="24"/>
+				<s:ToggleButton skinClass="org.maths.FB.skins.ToggleCellSkin" label="60"/>
+			</s:TileGroup>
+			
+			<s:Label text="as you can"/>
+			<s:Group height="30"/>
+			
+			<s:HGroup>
+				<s:Button id="showMeButton" label="Show Me!"/>
+				<s:Button id="playButton" label="Play"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:VGroup>
+	
+	<components:Picker id="picker" horizontalCenter="0" width="80%" height="80%" verticalCenter="0" visible="false"/>
+</s:View>

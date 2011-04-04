@@ -3,7 +3,7 @@
 					 xmlns:s="library://ns.adobe.com/flex/spark" 
 					 xmlns:local="*" 
 					 xmlns:views="org.maths.FB.views.*"
-					 firstView="org.maths.FB.views.Home" >
+					 firstView="org.maths.FB.views.Introduction" >
 	
 	<fx:Style source="/css/styles.css"/>
 	
@@ -13,5 +13,12 @@
 			private var fbContext:FBContext = new FBContext(this as DisplayObjectContainer);
 		]]>
 	</fx:Script>
+	
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace local "*";
+		@namespace views "org.maths.FB.views.*";
+		
+	</fx:Style>
 	
 </s:MobileApplication>

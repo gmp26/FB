@@ -11,13 +11,14 @@ package
 	import org.maths.FB.signals.NoRevealsLeftSignal;
 	import org.maths.FB.signals.RevealAllSignal;
 	import org.maths.FB.signals.RevealOneSignal;
-	import org.maths.FB.signals.StartupCompleteSignal;
 	import org.maths.FB.views.Home;
 	import org.maths.FB.views.HomeMediator;
 	import org.maths.FB.views.MainPanel;
 	import org.maths.FB.views.MainPanelMediator;
 	import org.maths.FB.views.SidePanel;
 	import org.maths.FB.views.SidePanelMediator;
+	import org.maths.FB.views.Introduction;
+	import org.maths.FB.views.IntroductionMediator;
 	import org.maths.FB.views.TimesTable;
 	import org.maths.FB.views.TimesTableMediator;
 	import org.robotlegs.base.ContextEvent;
@@ -28,7 +29,6 @@ package
 	{
 		private var ppi:Number;
 		private var appState:AppState;
-		private var startupCompleteSignal:StartupCompleteSignal;
 		
 		public function FBContext(contextView:DisplayObjectContainer=null, autoStartup:Boolean=true, ppi:Number=-1)
 		{
@@ -41,7 +41,6 @@ package
 		override public function startup():void
 		{
 			// Map signals
-			startupCompleteSignal = new StartupCompleteSignal(this, ContextEvent.STARTUP_COMPLETE);
 			injector.mapSingleton(NewProblemSignal);
 			injector.mapSingleton(NewTableSignal);
 			injector.mapSingleton(RevealAllSignal);
@@ -57,8 +56,6 @@ package
 			else
 				appState.ppi = ppi;
 			
-			appState.startupSignal = startupCompleteSignal;
-			
 			injector.mapValue(AppState, appState);
 			
 			// Map commands
@@ -68,7 +65,8 @@ package
 			mediatorMap.mapView(MainPanel, MainPanelMediator);
 			mediatorMap.mapView(SidePanel, SidePanelMediator);
 			mediatorMap.mapView(TimesTable, TimesTableMediator);
-			mediatorMap.mapView(Home, HomeMediator, Home, false, true);
+			mediatorMap.mapView(Introduction, IntroductionMediator);
+			mediatorMap.mapView(Home, HomeMediator, Home);
 			mediatorMap.createMediator(contextView);
 			
 			

@@ -1,6 +1,5 @@
 package org.maths.FB.models
 {
-	import org.maths.FB.signals.StartupCompleteSignal;
 	import org.osflash.signals.Signal;
 
 	public class AppState
@@ -11,11 +10,6 @@ package org.maths.FB.models
 		 */
 		public var ppi:Number;
 		
-		/**
-		 * signalled after initial context has been setup 
-		 */
-		public var startupSignal:StartupCompleteSignal;
-
 		/**
 		 * true if phone is in horizontal plane 
 		 */

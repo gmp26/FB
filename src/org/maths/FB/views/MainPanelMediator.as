@@ -64,7 +64,7 @@ package org.maths.FB.views
 			rh.addElement(x);
 			for(var i:int = 0; i < appState.size; i++) {
 				var header:HeaderButton = new HeaderButton();
-				header.label=(i+1).toString();
+				header.label="?"; 
 				rh.addElement(header);
 			}
 			
@@ -74,9 +74,9 @@ package org.maths.FB.views
 			for(i = 0; i < appState.size; i++) {
 				var spacer:Group = new Group();
 				spacer.height = pad;
-				pad = 16;
+				pad = 12;
 				header = new HeaderButton();
-				header.label=(i+1).toString();
+				header.label="?";
 				ch.addElement(spacer);
 				ch.addElement(header);
 			}
@@ -285,9 +285,8 @@ package org.maths.FB.views
 			for(var i:int = 0; i < mainPanel.rowHeader.numElements; i++) {
 				var header:HeaderButton = mainPanel.rowHeader.getElementAt(i) as HeaderButton;
 				if(header) {
-					var label:String = appState.rowHeadings[index++];
+					var label:String = "?"; //appState.rowHeadings[index++];
 					header.label = label;
-					//trace("" + i + ":" + label);
 					header.enabled = true; 
 					header.selected = false;
 					header.currentState = "up";
@@ -298,7 +297,7 @@ package org.maths.FB.views
 			for(var j:int = 0; j < mainPanel.columnHeader.numElements; j++) {
 				header = mainPanel.columnHeader.getElementAt(j) as HeaderButton;
 				if(header) {
-					header.label = appState.colHeadings[index++];
+					header.label = "?"; //appState.colHeadings[index++];
 					header.enabled = true;
 					header.selected = false;
 					header.currentState = "up";
@@ -347,8 +346,7 @@ package org.maths.FB.views
 		private function changed(event:Event):void
 		{
 			var tb:HeaderButton = event.target as HeaderButton;
-//			if(!appState.teacher)
-				tb.enabled = false;
+
 		}
 		
 		

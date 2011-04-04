@@ -37,7 +37,6 @@ package org.maths.FB.views
 		
 		override public function onRegister():void
 		{
-			appState.startupSignal.add(startup);
 			
 			home.stage.addEventListener(Event.RESIZE, doLayout);
 			
@@ -60,7 +59,6 @@ package org.maths.FB.views
 		
 		override public function onRemove():void
 		{
-			appState.startupSignal.remove(startup);
 			home.stage.removeEventListener(Event.RESIZE, doLayout);
 			if(accelerometer) {
 				accelerometer.removeEventListener(AccelerometerEvent.UPDATE, onAccelerometerUpdated);
@@ -94,27 +92,6 @@ package org.maths.FB.views
 		
 		private function doLayout(event:Event=null):void
 		{
-			/* Not yet clear what needs to be done here....
-			// Remove any children
-			while (home.numChildren > 0) home.removeChildAt(0);
-			
-			if(stageWidth == 0 || stageHeight == 0)
-				return;
-			
-			// Draw the background
-			var bg:Sprite = new Sprite();
-			bg.graphics.beginFill(BACKGROUND);
-			bg.graphics.drawRect(0, 0, stageWidth, stageHeight);
-			bg.graphics.endFill();
-			home.addChild(bg);
-			
-			var headerPickerClass:Class = deviceClassFactory.getClassFor(HeaderPicker);
-			var headerPicker:HeaderPicker = new headerPickerClass();
-			headerPicker.x = 100;
-			headerPicker.y = 100;
-			home.addChild(headerPicker);
-			*/
-			
 		}
 		
 		private function getOrientation():String

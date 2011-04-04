@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Catalyst" parentProject="67f20f3a-3340-4eed-87d5-ba1267c82ede" projectUUID="67f20f3a-3340-4eed-87d5-ba1267c82ede" sdkVersion="4.0.0" uuid="884c0c05-8569-4b08-b26a-2a5a524b56ac" version="4">
+  <projects/>
+  <src/>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="884c0c05-8569-4b08-b26a-2a5a524b56ac"/>
+    <linked location="/libs" path="/libs" position="1" uuid="884c0c05-8569-4b08-b26a-2a5a524b56ac"/>
+  </swc>
+  <misc/>
+  <theme/>
+</fxpProperties>

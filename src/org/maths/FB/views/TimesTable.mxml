@@ -10,7 +10,7 @@
 			 >
 	
 	<s:layout>
-		<s:TileLayout requestedColumnCount="{requestedColumnCount}" requestedRowCount="{requestedRowCount}" />
+		<s:TileLayout requestedColumnCount="{requestedColumnCount}" requestedRowCount="{requestedRowCount}" horizontalGap="12" verticalGap="12"/>
 	</s:layout>
 	
 	<fx:Declarations>

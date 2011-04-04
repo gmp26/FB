@@ -5,17 +5,17 @@
 	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
-		<s:SolidColorStroke id="lineStroke" weight="4" color="0xCCCCCC"/>
+		<s:SolidColorStroke id="lineStroke" weight="2" color="0x888888"/>
 	</fx:Declarations>
 	
 	<s:VGroup x="50" y="60" gap="15">
-		<s:HGroup id="rowHeader" gap="15"/>
-		<s:HGroup gap="10" verticalAlign="top">
-			<s:VGroup id="columnHeader" gap="0"/>
+		<s:HGroup id="rowHeader" gap="15" paddingLeft="5"/>
+		<s:HGroup gap="10" verticalAlign="top" paddingLeft="5">
+			<s:VGroup id="columnHeader" gap="0" paddingTop="0"/>
 			<views:TimesTable/>
 		</s:HGroup>
 	</s:VGroup>
-	<s:Line id="topLine" x="20" y="161" stroke="{lineStroke}" width="580"/>
-	<s:Line id="sideLine" y="30" x="149" stroke="{lineStroke}" height="580"/>
+	<s:Line id="topLine" x="20" y="165" stroke="{lineStroke}" width="580"/>
+	<s:Line id="sideLine" y="30" x="155" stroke="{lineStroke}" height="580"/>
 
 </s:Group>
