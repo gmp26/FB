@@ -1,9 +1,11 @@
 package org.maths.FB.views
 {
+	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.utils.setTimeout;
 	
 	import org.maths.FB.components.Picker;
+	import org.maths.FB.components.TouchFlare;
 	import org.maths.FB.models.AppState;
 	import org.robotlegs.mvcs.Mediator;
 	
@@ -43,11 +45,20 @@ package org.maths.FB.views
 			var delay:int = 1000;
 			var picker:Picker = introduction.picker;
 			
+			
+			
 			picker.visible = true;
 			setTimeout(function():void {
-				picker.highlight("b12", true);
+				picker.highlight("b9", true);
+				var flare:TouchFlare = new TouchFlare();
+				flare.addEventListener(Event.COMPLETE, function(event:Event):void {
+					picker.removeElement(flare);
+				});
+				flare.x = (picker.pos("b9").x + picker.b9.width/2) ;
+				flare.y = (picker.pos("b9").y + picker.b9.height/2) ;
+				picker.addElement(flare);
 				setTimeout(function():void {
-					picker.highlight("b12", false);
+					picker.highlight("b9", false);
 					picker.visible=false;
 				}, delay);
 			}, delay);

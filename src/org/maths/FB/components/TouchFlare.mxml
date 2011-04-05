@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+			   xmlns:fc="http://ns.adobe.com/flashcatalyst/2009"
+			   width="80" height="80"
+			   creationComplete="play()">
+
+
+	<fx:Script>
+		<![CDATA[
+			import com.tweenman.TweenMan;
+	
+			
+			// time-based alpha tween
+			private function play():void
+			{
+				TweenMan.addTween(this.ellipse1, { time: 0.5, scale: 5, x:-32, y:-32, ease: "easeOutBounce", onComplete:done });
+			}
+			
+			private function done():void
+			{
+				dispatchEvent(new Event(Event.COMPLETE));
+			}
+		]]>
+	</fx:Script>
+	
+	<s:Ellipse id="ellipse1" width="16" height="16">
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#FDFF00" joints="miter" miterLimit="4"
+								weight="2"/>
+		</s:stroke>
+	</s:Ellipse>
+	
+</s:Group>

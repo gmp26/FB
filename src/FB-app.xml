@@ -179,7 +179,12 @@
 	<!-- End of the schema for adding the android specific tags in AndroidManifest.xml file -->
 
 <android>
-    <manifestAdditions><![CDATA[
+    <manifestAdditions>
+	&lt;manifest&gt;
+		&lt;!-- See the Adobe AIR documentation for more information about setting Google Android permissions --&gt;
+		&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+	&lt;/manifest&gt;
+<![CDATA[
 	<manifest>
 		<!-- See the Adobe AIR documentation for more information about setting Google Android permissions -->
 		<uses-permission android:name="android.permission.INTERNET"/>

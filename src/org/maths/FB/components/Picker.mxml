@@ -18,16 +18,21 @@
 				if(set) {
 					for(var i:int=0, item:HeaderButton = choices.getElementAt(0) as HeaderButton; (i < len) && item; item=choices.getElementAt(++i) as HeaderButton) {
 						item.filters = [blur];
-						item.scaleX = item.scaleY = 0.8;
 					}
 					(this[name] as HeaderButton).filters = [];
 				}
 				else {
 					for(i=0, item = choices.getElementAt(0) as HeaderButton; (i < len) && item; item=choices.getElementAt(++i) as HeaderButton) {
-						item.scaleX = item.scaleY = 1;
 						item.filters = [];				
 					}				
 				}
+			}
+			
+			public function pos(name:String):Point
+			{
+				var h:HeaderButton = this[name] as HeaderButton;
+				var p:Point = choices.localToGlobal(new Point(h.x, h.y));
+				return globalToLocal(p);
 			}
 		]]>
 	</fx:Script>
@@ -37,7 +42,7 @@
 	</s:filters>
 	
 	<s:Rect width="100%" height="100%" fill="{backdrop}" radiusX="30" radiusY="30"/>
-	<components:ScaledGroup width="90%" height="90%" horizontalCenter="0" verticalCenter="0">
+	<components:ScaledGroup id="scaler" width="90%" height="90%" horizontalCenter="0" verticalCenter="0">
 		
 		<s:TileGroup id="choices" horizontalCenter="0" verticalCenter="0">
 			<components:HeaderButton id="b2" label="2"/>
