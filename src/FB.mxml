@@ -13,12 +13,6 @@
 			private var fbContext:FBContext = new FBContext(this as DisplayObjectContainer);
 		]]>
 	</fx:Script>
-	
-	<fx:Style>
-		@namespace s "library://ns.adobe.com/flex/spark";
-		@namespace local "*";
-		@namespace views "org.maths.FB.views.*";
-		
-	</fx:Style>
+
 	
 </s:MobileApplication>

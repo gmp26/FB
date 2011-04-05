@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark">
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 addedToStage="orient()"
+		 resize="orient()">
+	
+	<!--
+	This group is either an HGroup or a VGroup according to the screen orientation.
+	Occasionally it may be necessary to adopt the opposite orientation to the screen - in that
+	case, set opposite to true.
+	-->
+	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
@@ -11,26 +20,115 @@
 			import spark.layouts.VerticalLayout;
 			
 			public var opposite:Boolean = false;
+			public var isPortrait:Boolean;
 			
 			public function orient():void
 			{
 				if(stage == null) return;
 				
 				if(stage.stageHeight > stage.stageWidth) {
-					// window is portrait
-					if(opposite)
-						layout = new HorizontalLayout();
-					else
-						layout = new VerticalLayout();
+					isPortrait = true && !opposite;
 				} 
 				else {
 					//window is landscape
-					if(opposite)
-						layout = new VerticalLayout();
-					else
-						layout = new HorizontalLayout();
+					isPortrait = false || opposite;
 				}
+
+				if(isPortrait)
+					layout = new VerticalLayout();
+				else
+					layout = new HorizontalLayout();
+				
+				// set deferred properties
+				if(_horizontalAlign)
+					horizontalAlign = _horizontalAlign;
+				
+				if(_verticalAlign)
+					verticalAlign = _verticalAlign;
+				//invalidateDisplayList();
 			}
+			
+			public function get horizontalAlign():String
+			{
+				if(isPortrait)
+					return (layout as VerticalLayout).horizontalAlign;
+				else
+					return (layout as HorizontalLayout).horizontalAlign;
+			}
+			
+			private var _horizontalAlign:String;
+			public function set horizontalAlign(s:String):void
+			{
+				if(stage == null) {
+					_horizontalAlign = s;
+					return;
+				}
+				if(isPortrait)
+					(layout as VerticalLayout).horizontalAlign = s;
+				else
+					(layout as HorizontalLayout).horizontalAlign = s;
+			}
+			
+			public function get verticalAlign():String
+			{
+				if(isPortrait)
+					return (layout as VerticalLayout).verticalAlign;
+				else
+					return (layout as HorizontalLayout).verticalAlign;
+			}
+			
+			private var _verticalAlign:String;
+			public function set verticalAlign(s:String):void
+			{
+				if(stage == null) {
+					_verticalAlign = s;
+					return;
+				}
+				if(isPortrait)
+					(layout as VerticalLayout).verticalAlign = s;
+				else
+					(layout as HorizontalLayout).verticalAlign = s;
+			}
+			
+			override public function get percentWidth():Number
+			{
+				if(isPortrait)
+					return super.percentWidth;
+				else
+					return super.percentHeight;
+			}
+			override public function set percentWidth(w:Number):void
+			{
+				if(isPortrait)
+					super.percentWidth = w;
+				else
+					super.percentHeight = w;
+			}
+			
+			override public function get percentHeight():Number
+			{
+				if(isPortrait)
+					return super.percentHeight;
+				else
+					return super.percentWidth;
+			}
+			override public function set percentHeight(h:Number):void
+			{
+				if(isPortrait)
+					super.percentHeight = h;
+				else
+					super.percentWidth = h;
+			}
+/*			
+			override public function get verticalCenter():Object
+			{
+				
+			}
+			override public function set verticalCenter():Object
+			{
+				
+			}
+*/			
 		]]>
 	</fx:Script>
-</s:HGroup>
+</s:Group>

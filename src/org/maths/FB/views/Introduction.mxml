@@ -13,33 +13,46 @@
 		<s:Button id="skipButton" label="skip" /> 
 	</s:actionContent>
 	
-	<s:VGroup horizontalAlign="center" width="100%" height="100%">
-		<s:VGroup paddingTop="40" paddingBottom="40" horizontalAlign="center">
-			<s:Label text="Work out"/>
-			<s:Label text="the numbers in green"/>
-			<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
-			<s:Group height="30"/>
-			<s:Label text="by revealing as few"/>
-			<s:Label text="hidden answers"/>
-			
-			<s:TileGroup>
-				<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="x" enabled="false"/>
-				<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
-				<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
-				<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
-				<s:ToggleButton skinClass="org.maths.FB.skins.ToggleCellSkin" label="24"/>
-				<s:ToggleButton skinClass="org.maths.FB.skins.ToggleCellSkin" label="60"/>
-			</s:TileGroup>
-			
-			<s:Label text="as you can"/>
-			<s:Group height="30"/>
-			
-			<s:HGroup>
-				<s:Button id="showMeButton" label="Show Me!"/>
-				<s:Button id="playButton" label="Play"/>
-			</s:HGroup>
-		</s:VGroup>
-	</s:VGroup>
+	<s:Group width="100%" height="100%">
+		<components:OGroup horizontalCenter="0" top="40" width="100%">
+	
+			<s:VGroup horizontalAlign="center" width="100%" 
+					  paddingBottom="30"
+					  paddingTop="10"
+					  paddingLeft="10"
+					  paddingRight="10"
+					  >
+				<s:Label text="Work out the"/>
+				<s:Label text="numbers in green"/>
+				<s:HGroup verticalAlign="middle">				
+					<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+					<s:Label text="x" width="100%" textAlign="center"/>				
+					<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+				</s:HGroup>
+			</s:VGroup>
+	
+			<s:VGroup  horizontalAlign="center" width="100%" 
+					   paddingBottom="10"
+					   paddingTop="10"
+					   paddingLeft="10"
+					   paddingRight="10"
+					   >
+				<s:Label text="by revealing as few hidden"/>
+				<s:Label text="answers as you can"/>
+				<s:HGroup verticalAlign="middle">
+					<s:Label text="="/>				
+					<s:ToggleButton skinClass="org.maths.FB.skins.ToggleCellSkin" label="24"/>
+				</s:HGroup>
+			</s:VGroup>
+		</components:OGroup>
+		
+		<s:HGroup  horizontalCenter="0" verticalAlign="middle" bottom="10">
+			<s:Button id="showMeButton" label="Demo"/>
+			<s:Button id="playButton" label="Play" />
+		</s:HGroup>
+		
+	</s:Group>
+		
 	
 	<components:Picker id="picker" horizontalCenter="0" width="80%" height="80%" verticalCenter="0" visible="false"/>
 </s:View>
