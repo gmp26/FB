@@ -31,8 +31,18 @@
 			public function pos(name:String):Point
 			{
 				var h:HeaderButton = this[name] as HeaderButton;
-				var p:Point = choices.localToGlobal(new Point(h.x, h.y));
+				
+				trace(name + ":" + h.globalLocation);
+				
+				//return this.globalToLocal(h.globalLocation);
+				
+				//var p:Point = choices.localToGlobal(new Point(h.x+h.width/2, h.y+h.height/2));
+				
+				var p:Point = h.globalLocation;
+				
+				trace(p + " globally: " + globalToLocal(p));
 				return globalToLocal(p);
+				
 			}
 		]]>
 	</fx:Script>

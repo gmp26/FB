@@ -49,19 +49,34 @@ package org.maths.FB.views
 			
 			picker.visible = true;
 			setTimeout(function():void {
-				picker.highlight("b9", true);
+				picker.highlight("b12", true);
 				var flare:TouchFlare = new TouchFlare();
 				flare.addEventListener(Event.COMPLETE, function(event:Event):void {
 					picker.removeElement(flare);
 				});
-				flare.x = (picker.pos("b9").x + picker.b9.width/2) ;
-				flare.y = (picker.pos("b9").y + picker.b9.height/2) ;
+				flare.x = picker.pos("b12").x;
+				flare.y = picker.pos("b12").y;
 				picker.addElement(flare);
 				setTimeout(function():void {
-					picker.highlight("b9", false);
+					picker.highlight("b12", false);
 					picker.visible=false;
 				}, delay);
 			}, delay);
+		}
+		
+		private function get isPortrait():Boolean
+		{
+			return (stageHeight > stageWidth) ? true : false;
+		}
+		
+		private function get stageHeight():int
+		{
+			return introduction.stage.stageHeight;
+		}
+		
+		private function get stageWidth():int
+		{
+			return introduction.stage.stageWidth;
 		}
 	}
 }
