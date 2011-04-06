@@ -10,6 +10,12 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			public var hiddenLabel:String = "0";
+		]]>
+	</fx:Script>
 
 	<components:states>
 		<s:State name="upAndSelected"/>

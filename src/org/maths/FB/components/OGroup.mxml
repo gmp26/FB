@@ -45,6 +45,8 @@
 				
 				if(_verticalAlign)
 					verticalAlign = _verticalAlign;
+				
+				gap = _gap;
 				//invalidateDisplayList();
 			}
 			
@@ -90,6 +92,22 @@
 					(layout as HorizontalLayout).verticalAlign = s;
 			}
 			
+			private var _gap:int = 6;
+			public function get gap():int
+			{
+				return _gap;					
+			}
+			public function set gap(g:int):void
+			{
+				_gap = g;
+				if(stage == null) return;
+				if(isPortrait)
+					(layout as VerticalLayout).gap = g;
+				else
+					(layout as HorizontalLayout).gap = g;
+				
+			}
+/*			
 			override public function get percentWidth():Number
 			{
 				if(isPortrait)
@@ -119,16 +137,7 @@
 				else
 					super.percentWidth = h;
 			}
-/*			
-			override public function get verticalCenter():Object
-			{
-				
-			}
-			override public function set verticalCenter():Object
-			{
-				
-			}
-*/			
+*/		
 		]]>
 	</fx:Script>
 </s:Group>

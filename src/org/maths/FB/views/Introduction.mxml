@@ -1,58 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<views:AbstractLevel xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		xmlns:components="org.maths.FB.components.*"
-		title="Introduction" 
+		xmlns:views="org.maths.FB.views.*"
+		title="Introduction"
 		>
+	<fx:Script>
+		<![CDATA[
+			import org.maths.FB.components.Tick;
+		]]>
+	</fx:Script>
 	
-	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
-	</fx:Declarations>
-
-	<s:actionContent>
-		<s:Button id="skipButton" label="skip" /> 
-	</s:actionContent>
+	<views:actionContent>
+		<s:Button id="_skipButton" label="skip" /> 
+	</views:actionContent>
 	
-	<s:Group width="100%" height="100%">
-		<components:OGroup horizontalCenter="0" top="40" width="100%">
+	<s:Group id="_content" width="100%" height="100%">
+		<components:OGroup horizontalCenter="0" horizontalAlign="center" verticalAlign="middle" top="40" width="100%" gap="20">
 	
-			<s:VGroup horizontalAlign="center" width="100%" 
-					  paddingBottom="30"
-					  paddingTop="10"
-					  paddingLeft="10"
-					  paddingRight="10"
-					  >
-				<s:Label text="Work out the"/>
-				<s:Label text="numbers in green"/>
-				<s:HGroup verticalAlign="middle">				
-					<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
-					<s:Label text="x" width="100%" textAlign="center"/>				
-					<components:HeaderButton skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+			<s:VGroup horizontalAlign="center" width="70%" gap="20">
+				<s:VGroup horizontalAlign="center" width="100%">
+					<s:Label text="Work out the numbers"/>
+					<s:Label text="in the green boxes"/>
+				</s:VGroup>
+				<s:HGroup verticalAlign="middle" height="100">				
+					<components:HeaderButton id="h1" skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+					<s:Label text="×" width="100%" textAlign="center" fontSize="48"/>				
+					<components:HeaderButton id="h2" skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+					<s:Label text="="  fontSize="48"/>				
+					<s:ToggleButton id="product" skinClass="org.maths.FB.skins.ToggleCellSkin" label="49"/>
 				</s:HGroup>
 			</s:VGroup>
 	
-			<s:VGroup  horizontalAlign="center" width="100%" 
-					   paddingBottom="10"
-					   paddingTop="10"
-					   paddingLeft="10"
-					   paddingRight="10"
-					   >
-				<s:Label text="by revealing as few hidden"/>
-				<s:Label text="answers as you can"/>
-				<s:HGroup verticalAlign="middle">
-					<s:Label text="="/>				
-					<s:ToggleButton skinClass="org.maths.FB.skins.ToggleCellSkin" label="24"/>
-				</s:HGroup>
+			<s:VGroup  horizontalAlign="center" width="40%" verticalAlign="middle" >
+				<s:Label text="Tap on the boxes"/>
+				<s:Label text="to start."/>
 			</s:VGroup>
 		</components:OGroup>
-		
-		<s:HGroup  horizontalCenter="0" verticalAlign="middle" bottom="10">
-			<s:Button id="showMeButton" label="Demo"/>
-			<s:Button id="playButton" label="Play" />
-		</s:HGroup>
-		
 	</s:Group>
 		
+	<s:Button id="_checkButton" label="check" bottom="-90" width="100%" chromeColor="0xCC8800"/>
+	<s:Button id="_nextButton" label="Continue" icon="{Tick}" visible="false" fontSize="40" chromeColor="0" horizontalCenter="0" bottom="120"/>
+	<s:Button id="_tryAgainButton" label="Try again!" visible="false" fontSize="40" chromeColor="0" horizontalCenter="0" bottom="120"/>
 	
-	<components:Picker id="picker" horizontalCenter="0" width="80%" height="80%" verticalCenter="0" visible="false"/>
-</s:View>
+</views:AbstractLevel>

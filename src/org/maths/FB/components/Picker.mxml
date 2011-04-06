@@ -1,72 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:components="org.maths.FB.components.*">
+		 xmlns:components="org.maths.FB.components.*"
+		 >
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
-		<s:SolidColor id="backdrop" color="0x000000"/>
-		<s:BlurFilter id="blur" blurX="10" blurY="10" quality="2"/>
+		<s:SolidColor id="backdrop" color="0x000000" alpha="0.5"/>
 	</fx:Declarations>
 	
-	<fx:Script>
-		<![CDATA[
-			public function highlight(name:String, set:Boolean):void 
-			{
-				// There seems to be a bug in TileGroup since numElements is returning the number of cells, not the number of elements
-				var len:int = choices.numElements - 1;
-				
-				if(set) {
-					for(var i:int=0, item:HeaderButton = choices.getElementAt(0) as HeaderButton; (i < len) && item; item=choices.getElementAt(++i) as HeaderButton) {
-						item.filters = [blur];
-					}
-					(this[name] as HeaderButton).filters = [];
-				}
-				else {
-					for(i=0, item = choices.getElementAt(0) as HeaderButton; (i < len) && item; item=choices.getElementAt(++i) as HeaderButton) {
-						item.filters = [];				
-					}				
-				}
-			}
-			
-			public function pos(name:String):Point
-			{
-				var h:HeaderButton = this[name] as HeaderButton;
-				
-				trace(name + ":" + h.globalLocation);
-				
-				//return this.globalToLocal(h.globalLocation);
-				
-				//var p:Point = choices.localToGlobal(new Point(h.x+h.width/2, h.y+h.height/2));
-				
-				var p:Point = h.globalLocation;
-				
-				trace(p + " globally: " + globalToLocal(p));
-				return globalToLocal(p);
-				
-			}
-		]]>
-	</fx:Script>
-	
 	<s:filters>
-		<s:GlowFilter blurX="4" blurY="4" color="0xffffff" quality="2" />
+		<s:GlowFilter blurX="20" blurY="20" color="0x448800" quality="2" />
 	</s:filters>
 	
-	<s:Rect width="100%" height="100%" fill="{backdrop}" radiusX="30" radiusY="30"/>
+	<s:Rect width="100%" height="100%" fill="{backdrop}" />
 	<components:ScaledGroup id="scaler" width="90%" height="90%" horizontalCenter="0" verticalCenter="0">
-		
-		<s:TileGroup id="choices" horizontalCenter="0" verticalCenter="0">
-			<components:HeaderButton id="b2" label="2"/>
-			<components:HeaderButton id="b3" label="3"/>
-			<components:HeaderButton id="b4" label="4"/>
-			<components:HeaderButton id="b5" label="5"/>
-			<components:HeaderButton id="b6" label="6"/>
-			<components:HeaderButton id="b7" label="7"/>
-			<components:HeaderButton id="b8" label="8"/>
-			<components:HeaderButton id="b9" label="9"/>
-			<components:HeaderButton id="b10" label="10"/>
-			<components:HeaderButton id="b11" label="11"/>
-			<components:HeaderButton id="b12" label="12"/>
-		</s:TileGroup>
+		<components:OGroup verticalAlign="middle" horizontalAlign="center" gap="20">
+			<s:TileGroup id="choices" horizontalCenter="0" verticalCenter="0" verticalGap="10" horizontalGap="10"/>
+			<s:Label text="Pick a number"/>
+		</components:OGroup>
 
 	</components:ScaledGroup>
 </s:Group>
