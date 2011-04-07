@@ -13,12 +13,14 @@ package
 	import org.maths.FB.signals.RevealOneSignal;
 	import org.maths.FB.views.Home;
 	import org.maths.FB.views.HomeMediator;
+	import org.maths.FB.views.Intro1;
+	import org.maths.FB.views.Intro1Mediator;
+	import org.maths.FB.views.Intro2;
+	import org.maths.FB.views.Intro2Mediator;
 	import org.maths.FB.views.MainPanel;
 	import org.maths.FB.views.MainPanelMediator;
 	import org.maths.FB.views.SidePanel;
 	import org.maths.FB.views.SidePanelMediator;
-	import org.maths.FB.views.Introduction;
-	import org.maths.FB.views.IntroductionMediator;
 	import org.maths.FB.views.TimesTable;
 	import org.maths.FB.views.TimesTableMediator;
 	import org.robotlegs.base.ContextEvent;
@@ -65,7 +67,8 @@ package
 			mediatorMap.mapView(MainPanel, MainPanelMediator);
 			mediatorMap.mapView(SidePanel, SidePanelMediator);
 			mediatorMap.mapView(TimesTable, TimesTableMediator);
-			mediatorMap.mapView(Introduction, IntroductionMediator);
+			mediatorMap.mapView(Intro1, Intro1Mediator);
+			mediatorMap.mapView(Intro2, Intro2Mediator);
 			mediatorMap.mapView(Home, HomeMediator, Home);
 			mediatorMap.createMediator(contextView);
 			

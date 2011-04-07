@@ -9,12 +9,15 @@
 	</fx:Declarations>
 	
 	<s:VGroup x="50" y="60" gap="15">
-		<s:HGroup id="rowHeader" gap="15" paddingLeft="5"/>
+		<s:HGroup id="rowHeader" gap="15" paddingLeft="5" verticalAlign="middle">
+			<s:Label text="×" textAlign="center" fontSize="60" width="96" />
+		</s:HGroup>
 		<s:HGroup gap="10" verticalAlign="top" paddingLeft="5">
 			<s:VGroup id="columnHeader" gap="0" paddingTop="0"/>
 			<views:TimesTable/>
 		</s:HGroup>
 	</s:VGroup>
+	
 	<s:Line id="topLine" x="20" y="165" stroke="{lineStroke}" width="580"/>
 	<s:Line id="sideLine" y="30" x="155" stroke="{lineStroke}" height="580"/>
 

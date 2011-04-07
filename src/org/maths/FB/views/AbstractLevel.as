@@ -7,8 +7,6 @@ package org.maths.FB.views
 	
 	public class AbstractLevel extends View
 	{
-			
-
 		
 		public function AbstractLevel()
 		{

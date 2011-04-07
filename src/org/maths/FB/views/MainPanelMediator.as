@@ -52,16 +52,9 @@ package org.maths.FB.views
 		{
 			newProblemSignal.add(newProblem);
 			revealAllSignal.add(revealAll);
-			
-			var x:ToggleButton = new ToggleButton();
-			x.label="×";
-			x.enabled = false;
-			x.selected = false;
-			x.setStyle("skinClass", HeaderCellSkin);
 
 			// create row headers
 			var rh:Group = mainPanel.rowHeader;
-			rh.addElement(x);
 			for(var i:int = 0; i < appState.size; i++) {
 				var header:HeaderButton = new HeaderButton();
 				header.label="?"; 
@@ -95,7 +88,7 @@ package org.maths.FB.views
 		{
 			mainPanel.visible = false;
 						
-			selectAll(true);
+			resetHeaders(true);
 			hideAllSignal.dispatch();
 
 			var timer:Timer = new Timer(500,1);
@@ -346,26 +339,26 @@ package org.maths.FB.views
 		private function changed(event:Event):void
 		{
 			var tb:HeaderButton = event.target as HeaderButton;
-
 		}
 		
 		
 		private function revealAll():void
 		{
-			selectAll(false);
+			resetHeaders(false);
 		}
 		
-		private function selectAll(selected:Boolean):void
+		private function resetHeaders(selected:Boolean):void
 		{
+			
 			for(var i:int = 0; i < mainPanel.rowHeader.numElements; i++) {
 				var header:HeaderButton = mainPanel.rowHeader.getElementAt(i) as HeaderButton;
-				if(header) 
-					header.selected = selected;
+				if(header)
+					header.label = "?";
 			}
 			for(var j:int = 0; j < mainPanel.columnHeader.numElements; j++) {
 				header = mainPanel.columnHeader.getElementAt(j) as HeaderButton;
 				if(header)
-					header.selected = selected;
+					header.label = "?";
 			}
 		}
 		

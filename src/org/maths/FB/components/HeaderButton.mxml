@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<components:TouchableButton xmlns:fx="http://ns.adobe.com/mxml/2009" 
-				xmlns:s="library://ns.adobe.com/flex/spark" 
-				xmlns:mx="library://ns.adobe.com/flex/mx"
-				skinClass="org.maths.FB.skins.HeaderCellSkin"
-				label="?"
-				enabled="true"
-				selected="false" 
-				xmlns:components="org.maths.FB.components.*">
+<components:TouchableButton 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	skinClass="org.maths.FB.skins.HeaderCellSkin"
+	label="?"
+	enabled="true"
+	selected="false" 
+	xmlns:components="org.maths.FB.components.*">
+	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<fx:int id="value">0</fx:int>
 	</fx:Declarations>
-	
-	<fx:Script>
-		<![CDATA[
-			public var hiddenLabel:String = "0";
-		]]>
-	</fx:Script>
 
 	<components:states>
 		<s:State name="upAndSelected"/>

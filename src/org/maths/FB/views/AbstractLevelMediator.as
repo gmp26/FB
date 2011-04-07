@@ -4,6 +4,7 @@ package org.maths.FB.views
 	
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.events.TouchEvent;
 	import flash.filters.BlurFilter;
 	import flash.utils.setTimeout;
 	
@@ -15,21 +16,26 @@ package org.maths.FB.views
 	import org.robotlegs.mvcs.Mediator;
 	
 	import spark.components.Button;
+	import spark.components.ToggleButton;
 	import spark.components.supportClasses.GroupBase;
 	
 	public class AbstractLevelMediator extends Mediator
 	{
-
+		[Inject]
+		public var appState:AppState;
+		
 		public var level:AbstractLevel;
 		
 		// genereic names for components found in individual screens
 		public var blur:BlurFilter = new BlurFilter(4,4,2);
 		
 		public var content:GroupBase;
+		public var backButton:Button
 		public var skipButton:Button
 		public var checkButton:Button;
 		public var tryAgainButton:Button;
 		public var nextButton:Button;
+		
 		
 		public function AbstractLevelMediator()
 		{
@@ -37,6 +43,9 @@ package org.maths.FB.views
 		}
 		override public function onRegister():void
 		{
+			if(backButton) {
+				backButton.addEventListener(MouseEvent.CLICK, prevScreen);
+			}
 			skipButton.addEventListener(MouseEvent.CLICK, startGame);
 			checkButton.addEventListener(MouseEvent.CLICK, check);
 			tryAgainButton.addEventListener(MouseEvent.CLICK, tryAgain);
@@ -47,6 +56,7 @@ package org.maths.FB.views
 		
 		override public function onRemove():void
 		{
+			if(backButton) backButton.removeEventListener(MouseEvent.CLICK, prevScreen);
 			skipButton.removeEventListener(MouseEvent.CLICK, startGame);
 			checkButton.removeEventListener(MouseEvent.CLICK, check);
 			tryAgainButton.removeEventListener(MouseEvent.CLICK, tryAgain);
@@ -72,8 +82,7 @@ package org.maths.FB.views
 			level.navigator.pushView(Home);
 		}
 		
-		/*
-		private function headerClicked(event:MouseEvent):void
+		protected function headerClicked(event:MouseEvent):void
 		{
 			var header:HeaderButton = event.currentTarget as HeaderButton;
 			var picker:Picker = new Picker();
@@ -92,7 +101,7 @@ package org.maths.FB.views
 					header.label = isNaN(number) ? "?" : number.toString();
 					TweenMan.addTween(picker, {time:0.3, percentWidth:0, percentHeight:0, onComplete:function():void {
 						level.removeElement(picker);
-						level.content.filters = [];
+						content.filters = [];
 						endGame();
 					}});					
 				});
@@ -100,22 +109,34 @@ package org.maths.FB.views
 			picker.percentWidth=0;
 			picker.percentHeight=0;
 			TweenMan.addTween(picker, {time:0.3, percentWidth:80, percentHeight:80});
-
+			
 			picker.horizontalCenter=0;
 			picker.verticalCenter=0;
 			level.addElement(picker);
-			level.content.filters = [level.blur];
+			content.filters = [blur];
 		}
 		
-		private function endGame(event:MouseEvent = null):void
+		
+		protected function get isComplete():Boolean
 		{
-			if(level.h1.label != "?" && level.h2.label != "?" && level.product.selected)
-				TweenMan.addTween(level.checkButton, {time:0.3, bottom:0});
-			else
-				TweenMan.addTween(level.checkButton, {time:0.3, bottom:-90});
+			return false;
 		}
-		*/
 		
+		protected function productClicked(event:MouseEvent):void
+		{
+			var button:ToggleButton = event.currentTarget as ToggleButton;
+			button.enabled = false;
+			endGame();
+		}
+		
+		protected function endGame(event:MouseEvent = null):void
+		{
+			if(isComplete)
+				TweenMan.addTween(checkButton, {time:0.3, bottom:0});
+			else
+				TweenMan.addTween(checkButton, {time:0.3, bottom:-90});
+		}
+				
 		protected function get isCorrect():Boolean
 		{
 			return true;
@@ -133,6 +154,12 @@ package org.maths.FB.views
 				nextButton.visible = false;
 				tryAgainButton.visible = true;
 			}
+		}
+
+		protected function prevScreen(event:Event):void
+		{
+			enableAll();
+			level.navigator.popView();			
 		}
 		
 		protected function nextScreen(event:Event):void

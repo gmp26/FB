@@ -39,7 +39,7 @@
 			<s:DropShadowFilter alpha="1" angle="45.0" blurX="4.0" blurY="4.0" color="#666666" distance="0" hideObject="false" inner="true" knockout="true" quality="2" strength="3"/>
 		</s:filters>
 	</s:Rect>
-	<s:transitions>
+<!--	<s:transitions>
 		<s:Transition fromState="down" toState="up" autoReverse="true">
 			<s:Parallel>
 				<s:Parallel target="{rect3}">
@@ -60,5 +60,5 @@
 				</s:Parallel>
 			</s:Parallel>
 		</s:Transition>
-	</s:transitions>
+	</s:transitions>-->
 </s:Skin>
