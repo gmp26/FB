@@ -97,6 +97,7 @@ package org.maths.FB.views
 				var row:int = x / appState.rows;
 				analyser.addReveal(row, col, parseInt(b.label));
 				analyser.solve();
+				analyser.solve();
 				screen.unknowns.text = "Unknowns " + (analyser.solve() - appState.rows - appState.cols);
 			}
 			super.endGame(event);
