@@ -3,6 +3,7 @@ package
 	import flash.display.DisplayObjectContainer;
 	import flash.system.Capabilities;
 	
+	import org.maths.FB.models.Analyser;
 	import org.maths.FB.models.AppState;
 	import org.maths.FB.signals.GreyNumberSignal;
 	import org.maths.FB.signals.HideAllSignal;
@@ -31,6 +32,7 @@ package
 	{
 		private var ppi:Number;
 		private var appState:AppState;
+		private var analyser:Analyser;
 		
 		public function FBContext(contextView:DisplayObjectContainer=null, autoStartup:Boolean=true, ppi:Number=-1)
 		{
@@ -59,6 +61,9 @@ package
 				appState.ppi = ppi;
 			
 			injector.mapValue(AppState, appState);
+			
+			analyser = new Analyser();
+			injector.mapValue(Analyser, analyser);
 			
 			// Map commands
 			// signalCommandMap.mapSignalClass(StartupCompleteSignal, StartupCompleteCommand);

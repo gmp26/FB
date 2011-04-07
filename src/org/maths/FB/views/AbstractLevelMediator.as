@@ -126,7 +126,7 @@ package org.maths.FB.views
 		{
 			var button:ToggleButton = event.currentTarget as ToggleButton;
 			button.enabled = false;
-			endGame();
+			endGame(event);
 		}
 		
 		protected function endGame(event:MouseEvent = null):void

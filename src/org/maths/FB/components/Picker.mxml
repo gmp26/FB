@@ -16,7 +16,12 @@
 	<components:ScaledGroup id="scaler" width="90%" height="90%" horizontalCenter="0" verticalCenter="0">
 		<components:OGroup verticalAlign="middle" horizontalAlign="center" gap="20">
 			<s:TileGroup id="choices" horizontalCenter="0" verticalCenter="0" verticalGap="10" horizontalGap="10"/>
-			<s:Label text="Pick a number"/>
+			<s:VGroup>
+				<s:Label text="Pick a number"/>
+				<s:Group height="20"/>
+				<s:Label text="You may pick one that"/>
+				<s:Label text="is already in use."/>
+			</s:VGroup>
 		</components:OGroup>
 
 	</components:ScaledGroup>
