@@ -26,7 +26,7 @@
 				<s:HGroup verticalAlign="middle" height="100">				
 					<components:HeaderButton id="h1" skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
 					<s:Label text="×" width="100%" textAlign="center" fontSize="48"/>				
-					<components:HeaderButton id="h2" skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+					<components:HeaderButton id="h2" skinClass = "org.maths.FB.skins.AltHeaderCellSkin" label="?" />
 					<s:Label text="="  fontSize="48"/>				
 					<s:ToggleButton id="product" skinClass="org.maths.FB.skins.ToggleCellSkin" label="49"/>
 				</s:HGroup>

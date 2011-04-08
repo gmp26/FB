@@ -9,6 +9,31 @@
 	selected="false" 
 	xmlns:components="org.maths.FB.components.*">
 	
+	<fx:Script>
+		<![CDATA[
+			import org.maths.FB.skins.AltHeaderCellSkin;
+			import org.maths.FB.skins.HeaderCellSkin;
+			
+			public function set isGreen(b:Boolean):void
+			{
+				setStyle("skinClass", b ? HeaderCellSkin : AltHeaderCellSkin);
+			}
+			public function get isGreen():Boolean
+			{
+				return (skin is HeaderCellSkin);
+			}
+			
+			public function set isBlue(b:Boolean):void
+			{
+				return setStyle("skinClass", b ? AltHeaderCellSkin : HeaderCellSkin);
+			}
+			public function get isBlue():Boolean
+			{
+				return (skin is AltHeaderCellSkin);
+			}
+		]]>
+	</fx:Script>
+	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 		<fx:int id="value">0</fx:int>

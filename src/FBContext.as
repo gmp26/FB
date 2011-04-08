@@ -12,12 +12,16 @@ package
 	import org.maths.FB.signals.NoRevealsLeftSignal;
 	import org.maths.FB.signals.RevealAllSignal;
 	import org.maths.FB.signals.RevealOneSignal;
+	import org.maths.FB.views.CompletedLevels;
+	import org.maths.FB.views.CompletedLevelsMediator;
 	import org.maths.FB.views.Home;
 	import org.maths.FB.views.HomeMediator;
 	import org.maths.FB.views.Intro1;
 	import org.maths.FB.views.Intro1Mediator;
 	import org.maths.FB.views.Intro2;
 	import org.maths.FB.views.Intro2Mediator;
+	import org.maths.FB.views.Level1;
+	import org.maths.FB.views.Level1Mediator;
 	import org.maths.FB.views.MainPanel;
 	import org.maths.FB.views.MainPanelMediator;
 	import org.maths.FB.views.SidePanel;
@@ -77,6 +81,8 @@ package
 			mediatorMap.mapView(StartScreen, StartScreenMediator);
 			mediatorMap.mapView(Intro1, Intro1Mediator);
 			mediatorMap.mapView(Intro2, Intro2Mediator);
+			mediatorMap.mapView(CompletedLevels, CompletedLevelsMediator);
+			mediatorMap.mapView(Level1, Level1Mediator);
 			mediatorMap.mapView(Home, HomeMediator, Home);
 			mediatorMap.createMediator(contextView);
 			

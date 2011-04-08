@@ -19,14 +19,14 @@ package org.maths.FB.views
 	import spark.components.Label;
 	import spark.components.ToggleButton;
 	
-	public class Intro2Mediator extends AbstractLevelMediator
+	public class Level1Mediator extends AbstractLevelMediator
 	{
 		[Inject]
-		public var screen:Intro2;
+		public var screen:Level1;
 		
 		private var analyser:Analyser;
 					
-		public function Intro2Mediator()
+		public function Level1Mediator()
 		{
 			super();
 		}
@@ -40,6 +40,7 @@ package org.maths.FB.views
 			rowHeader = screen.rowHeader;
 			colHeader = screen.colHeader;
 			table = screen.table;
+			homeButton = screen._homeButton;
 			backButton = screen._backButton;
 			skipButton = screen._skipButton;
 			checkButton = screen._checkButton;
@@ -126,8 +127,7 @@ package org.maths.FB.views
 		
 		override protected function nextScreen(event:Event):void
 		{
-			enableAll();
-			screen.navigator.pushView(StartScreen);			
+			level.navigator.pushView(Home);			
 		}
 		
 		private function newProblem():void

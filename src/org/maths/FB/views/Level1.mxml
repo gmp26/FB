@@ -19,7 +19,7 @@
 	
 	<views:titleContent>
 		<s:Group width="10"/>
-		<s:Label text="Intro - 2/2" textAlign="center" fontSize="36"/>
+		<s:Label text="Level 1" textAlign="center" fontSize="36"/>
 	</views:titleContent>
 	
 	<views:navigationContent>

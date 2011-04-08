@@ -35,33 +35,7 @@ package org.maths.FB.models
 			}
 		}
 		
-		/*
-		private var _rowPool:Vector.<int>;
 
-		public function get rowPool():Vector.<int>
-		{
-			return _rowPool;
-		}
-
-		public function set rowPool(value:Vector.<int>):void
-		{
-			_rowPool = value;
-			rowPossibles = value.concat();
-		}
-
-		private var _colPool:Vector.<int>;
-
-		public function get colPool():Vector.<int>
-		{
-			return _colPool;
-		}
-
-		public function set colPool(value:Vector.<int>):void
-		{
-			_colPool = value;
-			colPossibles = value.concat();
-		}
-		*/
 		private var reveals:Vector.<RevealVO>;
 		
 		public function addReveal(row:int, col:int, product:int):void

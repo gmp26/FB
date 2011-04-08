@@ -30,7 +30,6 @@ package org.maths.FB.views
 			// inject common components into AbstractMediator
 			level = intro1;
 			content = intro1._content;
-			backButton = intro1._backButton;
 			skipButton = intro1._skipButton;
 			checkButton = intro1._checkButton;
 			nextButton = intro1._nextButton;
@@ -69,7 +68,48 @@ package org.maths.FB.views
 
 			super.disableAll();
 		}
-	
+		
+		override protected function populatePickerForHeader(picker:Picker, header:HeaderButton):void
+		{
+			for(var i:int = 1; i <= 12; i++) {
+				
+				var green:Boolean = header.isGreen;
+				
+				if(green && i % 2 == 0)
+					continue;
+
+				if(i > 1 && !green && i % 2 == 1)
+					continue;
+				
+				var button:HeaderButton = new HeaderButton();
+				if(green)
+					button.isGreen = true;
+				else
+					button.isGreen = false;
+				
+				if(i == 1) 
+					button.label = "?"
+				else
+					button.label = i.toString();
+				
+				picker.choices.addElement(button);
+				var f:Function;
+				button.addEventListener(MouseEvent.CLICK, f = function(event:MouseEvent):void {
+					button.removeEventListener(MouseEvent.CLICK, f);
+					
+					handlePickerChoice(picker, header, event.currentTarget as HeaderButton);
+					closePicker(picker);
+				});
+			}			
+		}
+		
+		// override in subclasses if you need something different
+		override protected function handlePickerChoice(picker:Picker, header:HeaderButton, pickedButton:HeaderButton):void
+		{
+			var number:int = parseInt(pickedButton.label);
+			header.label = isNaN(number) ? "?" : pickedButton.label;			
+		}
+		
 		override protected function get isComplete():Boolean
 		{
 			return (intro1.h1.label != "?" && intro1.h2.label != "?" && intro1.product.selected);
@@ -77,7 +117,7 @@ package org.maths.FB.views
 		
 		override protected function get isCorrect():Boolean
 		{
-			return (intro1.h1.label == "7" && intro1.h2.label == "7");
+			return (intro1.h1.label == "7" && intro1.h2.label == "4");
 		}
 		
 		override protected function nextScreen(event:Event):void

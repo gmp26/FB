@@ -13,10 +13,12 @@ package org.maths.FB.views
 	import org.maths.FB.components.Tick;
 	import org.maths.FB.components.TouchFlare;
 	import org.maths.FB.models.AppState;
+	import org.maths.FB.skins.HeaderCellSkin;
 	import org.robotlegs.mvcs.Mediator;
 	
 	import spark.components.Button;
 	import spark.components.Group;
+	import spark.components.TileGroup;
 	import spark.components.ToggleButton;
 	import spark.components.supportClasses.GroupBase;
 	
@@ -25,12 +27,17 @@ package org.maths.FB.views
 		[Inject]
 		public var appState:AppState;
 		
-		public var level:AbstractLevel;
 		
 		// genereic names for components found in individual screens
 		public var blur:BlurFilter = new BlurFilter(4,4,2);
 		
+		// injected values
+		public var level:AbstractLevel;
 		public var content:GroupBase;
+		public var rowHeader:Group;		
+		public var colHeader:Group;
+		public var table:TileGroup;
+		public var homeButton:Button
 		public var backButton:Button
 		public var skipButton:Button
 		public var checkButton:Button;
@@ -44,10 +51,9 @@ package org.maths.FB.views
 		}
 		override public function onRegister():void
 		{
-			if(backButton) {
-				backButton.addEventListener(MouseEvent.CLICK, prevScreen);
-			}
-			skipButton.addEventListener(MouseEvent.CLICK, startGame);
+			if(homeButton) homeButton.addEventListener(MouseEvent.CLICK, home);
+			if(backButton) backButton.addEventListener(MouseEvent.CLICK, prevScreen);
+			skipButton.addEventListener(MouseEvent.CLICK, nextScreen);
 			checkButton.addEventListener(MouseEvent.CLICK, check);
 			tryAgainButton.addEventListener(MouseEvent.CLICK, tryAgain);
 			nextButton.addEventListener(MouseEvent.CLICK, nextScreen);
@@ -57,15 +63,16 @@ package org.maths.FB.views
 		
 		override public function onRemove():void
 		{
+			if(homeButton) homeButton.removeEventListener(MouseEvent.CLICK, home);
 			if(backButton) backButton.removeEventListener(MouseEvent.CLICK, prevScreen);
-			skipButton.removeEventListener(MouseEvent.CLICK, startGame);
+			skipButton.removeEventListener(MouseEvent.CLICK, nextScreen);
 			checkButton.removeEventListener(MouseEvent.CLICK, check);
 			tryAgainButton.removeEventListener(MouseEvent.CLICK, tryAgain);
 			nextButton.removeEventListener(MouseEvent.CLICK, nextScreen);
 			
 			disableAll();
 		}
-		
+
 		protected function enableAll():void
 		{
 			content.filters = [];
@@ -83,51 +90,69 @@ package org.maths.FB.views
 			level.navigator.pushView(Home);
 		}
 		
-		protected var headersUnique:Boolean = false;
-		
 		protected function headerClicked(event:MouseEvent):void
 		{
-			var header:HeaderButton = event.currentTarget as HeaderButton;
 			var picker:Picker = new Picker();
+			
+			populatePickerForHeader(picker, event.currentTarget as HeaderButton);
+			popupPicker(picker);
+		}
+		
+		// override in subclasses if you need something different
+		protected function populatePickerForHeader(picker:Picker, header:HeaderButton):void
+		{
 			for(var i:int = 1; i <= 12; i++) {
 				var button:HeaderButton = new HeaderButton();
 				if(i == 1) 
 					button.label = "?"
 				else
 					button.label = i.toString();
+				
 				picker.choices.addElement(button);
 				var f:Function;
 				button.addEventListener(MouseEvent.CLICK, f = function(event:MouseEvent):void {
 					button.removeEventListener(MouseEvent.CLICK, f);
-					var b:HeaderButton = event.currentTarget as HeaderButton;
-					var number:int = parseInt(b.label);
 					
-					if(headersUnique) {
-						// steal the label from anyone else using it
-						var parent:Group = header.parent as Group;
-						for(var j:int = 0; j < parent.numElements; j++) {
-							var h:HeaderButton = parent.getElementAt(j);
-							if(h.label == b.label)
-								h.label = "?";
-						}
-					}
-					
-					header.label = isNaN(number) ? "?" : number.toString();
-					TweenMan.addTween(picker, {time:0.3, percentWidth:0, percentHeight:0, onComplete:function():void {
-						level.removeElement(picker);
-						content.filters = [];
-						endGame();
-					}});					
+					handlePickerChoice(picker, header, event.currentTarget as HeaderButton);
+					closePicker(picker);
 				});
-			}
+			}			
+		}
+		
+		// override in subclasses if you need something different
+		protected function popupPicker(picker:Picker):void
+		{
 			picker.percentWidth=0;
 			picker.percentHeight=0;
 			TweenMan.addTween(picker, {time:0.3, percentWidth:80, percentHeight:80});
-			
 			picker.horizontalCenter=0;
 			picker.verticalCenter=0;
 			level.addElement(picker);
 			content.filters = [blur];
+		}
+		
+		// override in subclasses if you need something different
+		protected function handlePickerChoice(picker:Picker, header:HeaderButton, pickedButton:HeaderButton):void
+		{
+			var number:int = parseInt(pickedButton.label);
+			header.label = isNaN(number) ? "?" : pickedButton.label;
+
+			// steal the label from anyone else using it
+			var parent:Group = header.parent as Group;
+			for(var j:int = 0; j < parent.numElements; j++) {
+				var h:HeaderButton = parent.getElementAt(j) as HeaderButton;
+				if(h != header && h != null && h.label == pickedButton.label)
+					h.label = "?";
+			}
+		}
+		
+		protected function closePicker(picker:Picker):void
+		{
+			TweenMan.addTween(picker, {time:0.3, percentWidth:0, percentHeight:0, onComplete:function():void {
+				level.removeElement(picker);
+				content.filters = [];
+				endGame();
+			}});			
 		}
 		
 		
@@ -170,6 +195,12 @@ package org.maths.FB.views
 			}
 		}
 
+		protected function home(event:MouseEvent):void
+		{
+			enableAll();
+			level.navigator.popToFirstView();
+		}
+		
 		protected function prevScreen(event:Event):void
 		{
 			enableAll();
@@ -182,9 +213,33 @@ package org.maths.FB.views
 			level.navigator.pushView(Home);			
 		}
 		
-		private function tryAgain(event:MouseEvent):void
+		protected function tryAgain(event:MouseEvent):void
 		{
 			enableAll();
+		}
+		
+		protected function rowMultiplier(i:int):int
+		{
+			var h:HeaderButton = rowHeader.getElementAt(i) as HeaderButton;
+			var n:int = h.value;
+			return n;
+		}
+		
+		protected function colMultiplier(i:int):int
+		{
+			var h:HeaderButton = colHeader.getElementAt(i) as HeaderButton;
+			var n:int = h.value;
+			return n;
+		}
+		
+		protected function get rows():int
+		{
+			return table.rowCount;
+		}
+		
+		protected function get cols():int
+		{
+			return table.columnCount;
 		}
 		
 		protected function get isPortrait():Boolean

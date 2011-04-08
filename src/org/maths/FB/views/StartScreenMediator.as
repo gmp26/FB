@@ -33,7 +33,7 @@ package org.maths.FB.views
 	
 		private function play(event:MouseEvent):void
 		{
-			startScreen.navigator.pushView(Home);
+			startScreen.navigator.pushView(CompletedLevels);
 		}
 	}
 }

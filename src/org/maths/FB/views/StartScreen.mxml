@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
-		title="Factor Basher"
 		>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>	
 
-	<s:VGroup width="200" horizontalCenter="0" verticalCenter="-40">
-		<s:Button id="introButton" width="100%" label="Introduction" chromeColor="#0359A9"/>
-		<s:Button id="playButton" width="100%" label="Play" chromeColor="#8A03B6"/>
+	<s:titleContent>
+		<s:Image source="@Embed(source='assets/icon.png')"/>
+		<s:Group width="20"/>
+		<s:Label text="Factor Basher" textAlign="center" fontSize="40"/>
+	</s:titleContent>
+	
+	<s:VGroup width="250" horizontalCenter="0" verticalCenter="-40">
+		<s:Button id="introButton" width="100%" label="Intro" fontSize="60" chromeColor="#0359A9" />
+		<s:Button id="playButton" width="100%" label="Play" fontSize="60" chromeColor="#8A03B6" />
 	</s:VGroup>
-	<s:Image left="10" bottom="5" source="@Embed(source='assets/nrich.png')"/>
-	<s:Label id="nrichButton" left="44" bottom="14" width="100%"
-			 text="http://nrich.maths.org"/>
+	
+	<s:HGroup bottom="5" width="100%" horizontalAlign="center" verticalAlign="middle">		
+		<s:Image source="@Embed(source='assets/nrich.png')"/>
+		<s:Label id="nrichButton" text="http://nrich.maths.org/mobile" fontSize="20"/>
+	</s:HGroup>
 	
 	
 </s:View>

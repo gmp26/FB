@@ -13,13 +13,29 @@
 	fontWeight: normal;
 	embedAsCFF: true;
 }
+@font-face {
+	src: url("/assets/Arial Rounded Bold.ttf");
+	fontFamily: noCFF;
+	fontWeight: normal;
+	embedAsCFF: false;
+}
 
 fbskins|ToggleCellSkin s|Label, fbskins|HeaderCellSkin s|Label {
 	fontFamily: CellFont;
 	fontSize: 45px;
 }
 
+s|Label
+{
+	fontFamily:CellFont;
+	fontWeight: normal;
+}
 
+s|Button
+{
+	fontFamily: noCFF;
+	fontWeight: normal;
+}
 
 /*
 s|Button 

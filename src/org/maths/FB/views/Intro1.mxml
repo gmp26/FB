@@ -3,7 +3,7 @@
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		xmlns:components="org.maths.FB.components.*"
 		xmlns:views="org.maths.FB.views.*"
-		title="Introduction - 1"
+		resize="orientable.orient()"
 		>
 	<fx:Script>
 		<![CDATA[
@@ -11,41 +11,48 @@
 		]]>
 	</fx:Script>
 	
+	<views:titleContent>
+		<s:Group width="10"/>
+		<s:Label text="Intro - 1/2" textAlign="center" fontSize="36"/>
+	</views:titleContent>
+	
 	<views:navigationContent>
-		<s:Button id="_backButton" label="back" /> 
+		<s:Button id="_homeButton" icon="@Embed('assets/home.png')"/> 
 	</views:navigationContent>
 	
 	<views:actionContent>
 		<s:Button id="_skipButton" label="skip" /> 
 	</views:actionContent>
 	
-	<s:Group id="_content" width="100%" height="100%">
-		<components:OGroup horizontalCenter="0" horizontalAlign="center" verticalAlign="middle" top="40" width="100%" gap="20">
-	
-			<s:VGroup horizontalAlign="center" width="70%" gap="20">
-				<s:VGroup horizontalAlign="center" width="100%">
-					<s:Label text="Work out the numbers"/>
-					<s:Label text="in the green boxes"/>
+	<components:ScaledGroup width="100%" height="100%">
+		<s:Group id="_content" width="100%" height="100%">
+			<components:OGroup id="orientable" horizontalCenter="0" horizontalAlign="center" verticalAlign="middle" top="40" width="100%" gap="20">
+		
+				<s:VGroup horizontalAlign="center" width="70%" gap="20" paddingLeft="20" paddingRight="0">
+					<s:VGroup horizontalAlign="center" width="100%">
+						<s:Label text="Each '?' hides a number"/>
+						<s:Label text="Can you find them?"/>
+					</s:VGroup>
+					<s:HGroup verticalAlign="middle" height="100">				
+						<components:HeaderButton id="h1" skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
+						<s:Label text="×" width="100%" textAlign="center" fontSize="48"/>				
+						<components:HeaderButton id="h2" skinClass = "org.maths.FB.skins.AltHeaderCellSkin" label="?" />
+						<s:Label text="=" fontSize="48"/>				
+						<s:ToggleButton id="product" skinClass="org.maths.FB.skins.ToggleCellSkin" label="28"/>
+					</s:HGroup>
 				</s:VGroup>
-				<s:HGroup verticalAlign="middle" height="100">				
-					<components:HeaderButton id="h1" skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
-					<s:Label text="×" width="100%" textAlign="center" fontSize="48"/>				
-					<components:HeaderButton id="h2" skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
-					<s:Label text="="  fontSize="48"/>				
-					<s:ToggleButton id="product" skinClass="org.maths.FB.skins.ToggleCellSkin" label="49"/>
-				</s:HGroup>
-			</s:VGroup>
-	
-			<s:VGroup  horizontalAlign="center" width="40%" verticalAlign="middle" >
-				<s:Label text="Tap on the black box"/>
-				<s:Label text="to reveal the answer"/>
-				<s:Group height="20"/>
-				<s:Label text="Tap on a green box"/>
-				<s:Label text="to pick a number"/>
-			</s:VGroup>
-			
-		</components:OGroup>
-	</s:Group>
+		
+				<s:VGroup  horizontalAlign="center" width="40%" verticalAlign="middle" >
+					<s:Label text="Tap on the black button"/>
+					<s:Label text="to reveal a clue"/>
+					<s:Group height="20"/>
+					<s:Label text="Tap on a coloured"/>
+					<s:Label text="button to pick a number."/>
+				</s:VGroup>
+				
+			</components:OGroup>
+		</s:Group>
+	</components:ScaledGroup>
 		
 	<s:Button id="_checkButton" label="check" bottom="-90" width="100%" chromeColor="0xCC8800"/>
 	<s:Button id="_nextButton" label="continue" icon="{Tick}" visible="false" fontSize="36" chromeColor="0" horizontalCenter="0" bottom="120"/>
