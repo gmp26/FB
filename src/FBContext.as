@@ -22,6 +22,8 @@ package
 	import org.maths.FB.views.MainPanelMediator;
 	import org.maths.FB.views.SidePanel;
 	import org.maths.FB.views.SidePanelMediator;
+	import org.maths.FB.views.StartScreen;
+	import org.maths.FB.views.StartScreenMediator;
 	import org.maths.FB.views.TimesTable;
 	import org.maths.FB.views.TimesTableMediator;
 	import org.robotlegs.base.ContextEvent;
@@ -72,6 +74,7 @@ package
 			mediatorMap.mapView(MainPanel, MainPanelMediator);
 			mediatorMap.mapView(SidePanel, SidePanelMediator);
 			mediatorMap.mapView(TimesTable, TimesTableMediator);
+			mediatorMap.mapView(StartScreen, StartScreenMediator);
 			mediatorMap.mapView(Intro1, Intro1Mediator);
 			mediatorMap.mapView(Intro2, Intro2Mediator);
 			mediatorMap.mapView(Home, HomeMediator, Home);

@@ -3,7 +3,7 @@
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		xmlns:components="org.maths.FB.components.*"
 		xmlns:views="org.maths.FB.views.*"
-		title="Introduction"
+		title="Introduction - 2"
 		resize="orientable.orient()"
 		>
 	
@@ -44,9 +44,20 @@
 					</s:HGroup>
 				</s:VGroup>
 				
-				<s:VGroup  horizontalAlign="center" width="40%" verticalAlign="middle" >
-					<s:Label id="unknowns" />
-				</s:VGroup>
+				<s:Group width="100%" horizontalCenter="0">
+					<s:VGroup id="instruction" horizontalAlign="center" width="100%">
+						<s:Label text="Tap on black boxes" />
+						<s:Label text="till you can work out" />
+						<s:Label text="all the green numbers" />
+					</s:VGroup>
+					
+					<s:VGroup id="enough" horizontalAlign="center"  visible="false" width="100%">
+						<s:Label text="You have revealed" />
+						<s:Label text="enough black boxes" />
+						<s:Label text="to solve the problem" />
+					</s:VGroup>					
+				</s:Group>
+
 			</components:OGroup>
 		</s:Group>
 		

@@ -16,6 +16,7 @@ package org.maths.FB.views
 	import org.robotlegs.mvcs.Mediator;
 	
 	import spark.components.Button;
+	import spark.components.Group;
 	import spark.components.ToggleButton;
 	import spark.components.supportClasses.GroupBase;
 	
@@ -82,6 +83,8 @@ package org.maths.FB.views
 			level.navigator.pushView(Home);
 		}
 		
+		protected var headersUnique:Boolean = false;
+		
 		protected function headerClicked(event:MouseEvent):void
 		{
 			var header:HeaderButton = event.currentTarget as HeaderButton;
@@ -98,6 +101,17 @@ package org.maths.FB.views
 					button.removeEventListener(MouseEvent.CLICK, f);
 					var b:HeaderButton = event.currentTarget as HeaderButton;
 					var number:int = parseInt(b.label);
+					
+					if(headersUnique) {
+						// steal the label from anyone else using it
+						var parent:Group = header.parent as Group;
+						for(var j:int = 0; j < parent.numElements; j++) {
+							var h:HeaderButton = parent.getElementAt(j);
+							if(h.label == b.label)
+								h.label = "?";
+						}
+					}
+					
 					header.label = isNaN(number) ? "?" : number.toString();
 					TweenMan.addTween(picker, {time:0.3, percentWidth:0, percentHeight:0, onComplete:function():void {
 						level.removeElement(picker);

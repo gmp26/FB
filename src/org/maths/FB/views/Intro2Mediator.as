@@ -84,8 +84,17 @@ package org.maths.FB.views
 		}
 		
 		override protected function get isComplete():Boolean
-		{
-			return false;
+		{			
+			for(var i:int = 0; i < screen.rowHeader.numElements; i++) {
+				if((screen.rowHeader.getElementAt(i) as HeaderButton).label == "?")
+					return false;
+			}
+			for(i = 0; i < screen.colHeader.numElements; i++) {
+				if((screen.colHeader.getElementAt(i) as HeaderButton).label == "?")
+					return false;
+			}
+
+			return true;
 		}
 		
 		override protected function endGame(event:MouseEvent=null):void
@@ -93,18 +102,42 @@ package org.maths.FB.views
 			if(event != null) {
 				var b:ToggleButton = event.currentTarget as ToggleButton;
 				var x:int = screen.table.getElementIndex(b);
-				var col:int = x % appState.cols;
-				var row:int = x / appState.rows;
+				var col:int = x % cols;
+				var row:int = x / rows;
 				analyser.addReveal(row, col, parseInt(b.label));
 				analyser.solve();
 				analyser.solve();
-				screen.unknowns.text = "Unknowns " + (analyser.solve() - appState.rows - appState.cols);
+				var unknowns:int = analyser.solve() - rows - cols;
+				if(unknowns == 0) {
+					screen.enough.visible = true;
+					screen.instruction.visible = false;
+					for(var i:int = 0; i < screen.table.numElements; i++) {
+						var t:ToggleButton = screen.table.getElementAt(i) as ToggleButton;
+						if(!t.selected) {
+							t.label = "";
+							t.enabled = false;
+							t.selected = true;
+						}
+					}
+				}
 			}
+			
 			super.endGame(event);
 		}
 		
 		override protected function get isCorrect():Boolean
 		{
+			for(var i:int = 0; i < screen.rowHeader.numElements; i++) {
+				var h:HeaderButton = screen.rowHeader.getElementAt(i) as HeaderButton;
+				if(parseInt(h.label) != h.value)
+					return false;
+			}
+			for(i = 0; i < screen.colHeader.numElements; i++) {
+				h = screen.colHeader.getElementAt(i) as HeaderButton;
+				if(parseInt(h.label) != h.value)
+					return false;
+			}
+			
 			return true;
 		}
 		
@@ -117,39 +150,41 @@ package org.maths.FB.views
 		{
 			screen.colHeader.addElement(newHeader(4));		
 			screen.colHeader.addElement(newHeader(3));		
-			screen.colHeader.addElement(newHeader(2));		
-			screen.colHeader.addElement(newHeader(8));
+			//screen.colHeader.addElement(newHeader(2));		
+			//screen.colHeader.addElement(newHeader(8));
 			
 			screen.rowHeader.addElement(newHeader(7));		
 			screen.rowHeader.addElement(newHeader(6));		
-			screen.rowHeader.addElement(newHeader(5));		
-			screen.rowHeader.addElement(newHeader(4));
+			//screen.rowHeader.addElement(newHeader(5));		
+			//screen.rowHeader.addElement(newHeader(4));
 			
 			screen.table.addElement(newProduct(0,0));
 			screen.table.addElement(newProduct(0,1));
-			screen.table.addElement(newProduct(0,2));
-			screen.table.addElement(newProduct(0,3));
+			//screen.table.addElement(newProduct(0,2));
+			//screen.table.addElement(newProduct(0,3));
 			
 			screen.table.addElement(newProduct(1,0));
 			screen.table.addElement(newProduct(1,1));
-			screen.table.addElement(newProduct(1,2));
-			screen.table.addElement(newProduct(1,3));
+			//screen.table.addElement(newProduct(1,2));
+			//screen.table.addElement(newProduct(1,3));
 			
-			screen.table.addElement(newProduct(2,0));
-			screen.table.addElement(newProduct(2,1));
-			screen.table.addElement(newProduct(2,2));
-			screen.table.addElement(newProduct(2,3));
+			//screen.table.addElement(newProduct(2,0));
+			//screen.table.addElement(newProduct(2,1));
+			//screen.table.addElement(newProduct(2,2));
+			//screen.table.addElement(newProduct(2,3));
 			
-			screen.table.addElement(newProduct(3,0));
-			screen.table.addElement(newProduct(3,1));
-			screen.table.addElement(newProduct(3,2));
-			screen.table.addElement(newProduct(3,3));
+			//screen.table.addElement(newProduct(3,0));
+			//screen.table.addElement(newProduct(3,1));
+			//screen.table.addElement(newProduct(3,2));
+			//screen.table.addElement(newProduct(3,3));
+			
+			screen.validateNow();
 			
 			// set up the solution analyser
 			analyser = new Analyser();
-			analyser.setRowRange(4, 2, 12);
-			analyser.setColRange(4, 2, 12);
-			screen.unknowns.text = "Unknowns " + (analyser.solve() - appState.rows - appState.cols);
+			analyser.setRowRange(rows, 2, 12);
+			analyser.setColRange(cols, 2, 12);
+			//screen.unknowns.text = "Unknowns " + (analyser.solve() - appState.rows - appState.cols);
 		}
 		
 		private function newHeader(value:int):HeaderButton
@@ -181,6 +216,12 @@ package org.maths.FB.views
 			return t;
 		}
 		
+		override protected function headerClicked(event:MouseEvent):void
+		{
+			headersUnique = true;
+			super.headerClicked(event);
+		}
+		
 		private function rowMultiplier(i:int):int
 		{
 			var h:HeaderButton = screen.rowHeader.getElementAt(i) as HeaderButton;
@@ -195,6 +236,14 @@ package org.maths.FB.views
 			return n;
 		}
 		
-		
+		private function get rows():int
+		{
+			return screen.table.rowCount;
+		}
+
+		private function get cols():int
+		{
+			return screen.table.columnCount;
+		}
 	}
 }

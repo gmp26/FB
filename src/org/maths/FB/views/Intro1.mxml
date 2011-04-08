@@ -3,13 +3,17 @@
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		xmlns:components="org.maths.FB.components.*"
 		xmlns:views="org.maths.FB.views.*"
-		title="Introduction"
+		title="Introduction - 1"
 		>
 	<fx:Script>
 		<![CDATA[
 			import org.maths.FB.components.Tick;
 		]]>
 	</fx:Script>
+	
+	<views:navigationContent>
+		<s:Button id="_backButton" label="back" /> 
+	</views:navigationContent>
 	
 	<views:actionContent>
 		<s:Button id="_skipButton" label="skip" /> 
@@ -44,7 +48,7 @@
 	</s:Group>
 		
 	<s:Button id="_checkButton" label="check" bottom="-90" width="100%" chromeColor="0xCC8800"/>
-	<s:Button id="_nextButton" label="Continue" icon="{Tick}" visible="false" fontSize="40" chromeColor="0" horizontalCenter="0" bottom="120"/>
-	<s:Button id="_tryAgainButton" label="Try again!" visible="false" fontSize="40" chromeColor="0" horizontalCenter="0" bottom="120"/>
+	<s:Button id="_nextButton" label="continue" icon="{Tick}" visible="false" fontSize="36" chromeColor="0" horizontalCenter="0" bottom="120"/>
+	<s:Button id="_tryAgainButton" label="try again!" visible="false" fontSize="36" chromeColor="0" horizontalCenter="0" bottom="120"/>
 	
 </views:AbstractLevel>

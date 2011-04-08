@@ -3,7 +3,7 @@
 					 xmlns:s="library://ns.adobe.com/flex/spark" 
 					 xmlns:local="*" 
 					 xmlns:views="org.maths.FB.views.*"
-					 firstView="org.maths.FB.views.Intro2" >
+					 firstView="org.maths.FB.views.StartScreen" >
 	
 	<fx:Style source="/css/styles.css"/>
 	

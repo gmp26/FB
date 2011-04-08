@@ -35,7 +35,7 @@ package org.maths.FB.models
 			}
 		}
 		
-		
+		/*
 		private var _rowPool:Vector.<int>;
 
 		public function get rowPool():Vector.<int>
@@ -61,7 +61,7 @@ package org.maths.FB.models
 			_colPool = value;
 			colPossibles = value.concat();
 		}
-		
+		*/
 		private var reveals:Vector.<RevealVO>;
 		
 		public function addReveal(row:int, col:int, product:int):void
