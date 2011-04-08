@@ -57,7 +57,12 @@ package org.maths.FB.views
 			checkButton.addEventListener(MouseEvent.CLICK, check);
 			tryAgainButton.addEventListener(MouseEvent.CLICK, tryAgain);
 			nextButton.addEventListener(MouseEvent.CLICK, nextScreen);
-			
+
+			for(var levelName:String in appState.completedLevels) {
+				var b:Button = level[levelName + "Button"];
+				b.icon = Tick;
+			}
+
 			enableAll();
 		}
 		

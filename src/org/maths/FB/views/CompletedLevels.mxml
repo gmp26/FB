@@ -22,7 +22,7 @@
 	</s:navigationContent>
 	
 	<s:VGroup id="levels" width="100%" horizontalAlign="center" verticalCenter="0" gap="10">
-		<s:Button id="introButton" label="Intro" icon="{Tick}" width="200" chromeColor="#0359A9"/>
+		<s:Button id="introButton" label="Intro" width="200" chromeColor="#0359A9"/>
 		<s:Button id="level1Button" label="Level 1" width="200" chromeColor="#8A03B6" enabled="true"/>
 		<s:Button id="level2Button" label="Level 2" width="200" chromeColor="#8A03B6" enabled="false"/>
 		<s:Button id="level3Button" label="Level 3" width="200" chromeColor="#8A03B6" enabled="false"/>

@@ -30,6 +30,7 @@ package org.maths.FB.views
 			// inject common components into AbstractMediator
 			level = intro1;
 			content = intro1._content;
+			homeButton = intro1._homeButton;
 			skipButton = intro1._skipButton;
 			checkButton = intro1._checkButton;
 			nextButton = intro1._nextButton;

@@ -122,6 +122,8 @@ package org.maths.FB.views
 					return false;
 			}
 			
+			appState.completedLevels["level1"] = true;
+			
 			return true;
 		}
 		

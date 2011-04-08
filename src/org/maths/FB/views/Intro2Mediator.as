@@ -40,6 +40,8 @@ package org.maths.FB.views
 			rowHeader = screen.rowHeader;
 			colHeader = screen.colHeader;
 			table = screen.table;
+			
+			homeButton = screen._homeButton;
 			backButton = screen._backButton;
 			skipButton = screen._skipButton;
 			checkButton = screen._checkButton;
@@ -120,6 +122,8 @@ package org.maths.FB.views
 				if(parseInt(h.label) != h.value)
 					return false;
 			}
+			
+			appState.completedLevels["intro"] = true;
 			
 			return true;
 		}
