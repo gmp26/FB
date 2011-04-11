@@ -10,22 +10,21 @@ package org.maths.FB.views
 	
 	import org.maths.FB.components.HeaderButton;
 	import org.maths.FB.components.Picker;
+	import org.maths.FB.components.TableButton;
 	import org.maths.FB.components.Tick;
-	import org.maths.FB.components.TouchFlare;
-	import org.maths.FB.models.AppState;
+	import org.maths.FB.models.Scores;
 	import org.maths.FB.skins.HeaderCellSkin;
 	import org.robotlegs.mvcs.Mediator;
 	
 	import spark.components.Button;
 	import spark.components.Group;
 	import spark.components.TileGroup;
-	import spark.components.ToggleButton;
 	import spark.components.supportClasses.GroupBase;
 	
 	public class AbstractLevelMediator extends Mediator
 	{
 		[Inject]
-		public var appState:AppState;
+		public var scores:Scores;
 		
 		
 		// genereic names for components found in individual screens
@@ -33,6 +32,7 @@ package org.maths.FB.views
 		
 		// injected values
 		public var level:AbstractLevel;
+		public var levelName:String;
 		public var content:GroupBase;
 		public var rowHeader:Group;		
 		public var colHeader:Group;
@@ -43,6 +43,8 @@ package org.maths.FB.views
 		public var checkButton:Button;
 		public var tryAgainButton:Button;
 		public var nextButton:Button;
+		public var min:int = 2;
+		public var max:int = 12;
 		
 		
 		public function AbstractLevelMediator()
@@ -58,10 +60,7 @@ package org.maths.FB.views
 			tryAgainButton.addEventListener(MouseEvent.CLICK, tryAgain);
 			nextButton.addEventListener(MouseEvent.CLICK, nextScreen);
 
-			for(var levelName:String in appState.completedLevels) {
-				var b:Button = level[levelName + "Button"];
-				b.icon = Tick;
-			}
+			scores.startLevel(levelName);
 
 			enableAll();
 		}
@@ -77,28 +76,49 @@ package org.maths.FB.views
 			
 			disableAll();
 		}
-
+	
+		protected function disableAll():void
+		{
+			for(var i:int = 0; i < rowHeader.numElements; i++) {
+				var h:HeaderButton = (rowHeader.getElementAt(i) as HeaderButton);
+				h.enabled = false;
+			}
+			for(i = 0; i < colHeader.numElements; i++) {
+				h = (colHeader.getElementAt(i) as HeaderButton);
+				h.enabled = false;
+			}
+			for(i = 0; i < table.numElements; i++) {
+				var b:TableButton = table.getElementAt(i) as TableButton;
+				if(b) b.enabled = false;
+			}
+			content.filters = [blur];
+			
+		}
+		
 		protected function enableAll():void
 		{
+			for(var i:int = 0; i < rowHeader.numElements; i++) {
+				var h:HeaderButton = (rowHeader.getElementAt(i) as HeaderButton);
+				h.enabled = true;
+			}
+			for(i = 0; i < colHeader.numElements; i++) {
+				h = (colHeader.getElementAt(i) as HeaderButton);
+				h.enabled = true;
+			}
+			for(i = 0; i < table.numElements; i++) {
+				var b:TableButton = table.getElementAt(i) as TableButton;
+				if(b && b.label=="") b.enabled = true;
+			}
+			
 			content.filters = [];
 			tryAgainButton.visible = false;
 			nextButton.visible = false;
 		}
 		
-		protected function disableAll():void
-		{
-			content.filters = [blur];
-		}
-		
-		protected function startGame(event:MouseEvent):void
-		{
-			level.navigator.pushView(Home);
-		}
-		
 		protected function headerClicked(event:MouseEvent):void
 		{
 			var picker:Picker = new Picker();
-			
+			disableAll();
 			populatePickerForHeader(picker, event.currentTarget as HeaderButton);
 			popupPicker(picker);
 		}
@@ -106,9 +126,9 @@ package org.maths.FB.views
 		// override in subclasses if you need something different
 		protected function populatePickerForHeader(picker:Picker, header:HeaderButton):void
 		{
-			for(var i:int = 1; i <= 12; i++) {
+			for(var i:int = min-1; i <= max; i++) {
 				var button:HeaderButton = new HeaderButton();
-				if(i == 1) 
+				if(i == min - 1) 
 					button.label = "?"
 				else
 					button.label = i.toString();
@@ -156,6 +176,7 @@ package org.maths.FB.views
 			TweenMan.addTween(picker, {time:0.3, percentWidth:0, percentHeight:0, onComplete:function():void {
 				level.removeElement(picker);
 				content.filters = [];
+				enableAll();
 				endGame();
 			}});			
 		}
@@ -168,8 +189,9 @@ package org.maths.FB.views
 		
 		protected function productClicked(event:MouseEvent):void
 		{
-			var button:ToggleButton = event.currentTarget as ToggleButton;
+			var button:TableButton = event.currentTarget as TableButton;
 			button.enabled = false;
+			button.label = (rowMultiplier(button.row) * colMultiplier(button.col)).toString();
 			endGame(event);
 		}
 		
@@ -189,10 +211,13 @@ package org.maths.FB.views
 		protected function check(event:MouseEvent):void
 		{
 			disableAll();
+			// but don't blur this time
+			content.filters=[];
 			TweenMan.addTween(checkButton, {time:0.3, bottom:-90});
 			if(isCorrect) {
 				nextButton.visible = true;
 				tryAgainButton.visible = false;
+				revealAll();
 			}
 			else {
 				nextButton.visible = false;
@@ -200,6 +225,16 @@ package org.maths.FB.views
 			}
 		}
 
+		protected function revealAll():void
+		{
+			for(var i:int=0; i < rowHeader.numElements; i++) {
+				for(var j:int = 0; j < colHeader.numElements; j++) {
+					var t:TableButton = table.getElementAt(i + j*colHeader.numElements) as TableButton;
+					t.label = (rowMultiplier(i) * colMultiplier(j)).toString();
+				}
+			}
+		}
+		
 		protected function home(event:MouseEvent):void
 		{
 			enableAll();
@@ -215,7 +250,7 @@ package org.maths.FB.views
 		protected function nextScreen(event:Event):void
 		{
 			enableAll();
-			level.navigator.pushView(Home);			
+			level.navigator.pushView(CompletedLevels);			
 		}
 		
 		protected function tryAgain(event:MouseEvent):void
@@ -246,7 +281,7 @@ package org.maths.FB.views
 		{
 			return table.columnCount;
 		}
-		
+	
 		protected function get isPortrait():Boolean
 		{
 			return (stageHeight > stageWidth) ? true : false;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  verticalAlign="middle"
+		  width="350" height="60"
+		  >
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:Image source="@Embed(source='assets/nrich.png')"/>
+	<s:VGroup horizontalAlign="left" gap="0">
+		<s:Label text="more at" fontSize="18"/> 
+		<s:Label id="nrichButton" text="http://nrich.maths.org/mobile" fontSize="20"
+				 textDecoration="underline"/>
+	</s:VGroup >
+</s:HGroup>

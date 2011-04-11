@@ -100,40 +100,7 @@ package org.maths.FB.models
 			return unknowns;
 		}
 		
-		private function fixHeader(row:int, rowValue:int, col:int, colValue:int):void
-		{
-			// remove value as a possibility for all other rows
-			for(var r:int = 0; r < rowPossibles.length; r++) {
-				if(r == row) continue;
-				var possibles:Vector.<int> = rowPossibles[r];
-				if(possibles.length <= 1)
-					continue;
-				var p:int = possibles.indexOf(rowValue);
-				if(p >= 0) {
-					possibles.splice(p, 1);
-					if(possibles.length == 1) {
-						fixRowHeader(r, possibles[0]);
-					}
-				}
-			}
-			
-			// remove value as a possibility for all other cols
-			for(var c:int = 0; c < colPossibles.length; c++) {
-				if(c == col) continue;
-				possibles = colPossibles[c];
-				if(possibles.length <= 1)
-					continue;
-				p = possibles.indexOf(colValue);
-				if(p >= 0) {
-					possibles.splice(p, 1);
-					if(possibles.length == 1) {
-						fixColHeader(c, possibles[0]);
-					}
-				}
-			}
-		}
-		
-		public function fixRowHeader(row:int, value:int):void
+		private function fixRowHeader(row:int, value:int):void
 		{
 			// remove value as a possibility for all other rows
 			for(var r:int = 0; r < rowPossibles.length; r++) {
@@ -151,7 +118,7 @@ package org.maths.FB.models
 			}
 		}
 		
-		public function fixColHeader(col:int, value:int):void
+		private function fixColHeader(col:int, value:int):void
 		{
 			
 			// remove value as a possibility for all other cols

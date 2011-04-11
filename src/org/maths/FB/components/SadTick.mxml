@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" width="30" height="30">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:SolidColorStroke id="stroke" color="0xCC0000" weight="12" />
+	</fx:Declarations>
+	
+	<s:filters>
+		<s:GlowFilter id="glow" color="0xffff00" quality="2" blurX="8" blurY="8" />
+	</s:filters>
+	
+	<s:Line xFrom="0" yFrom="20" xTo="10" yTo="30" stroke="{stroke}"  />
+	<s:Line xFrom="10" yFrom="30" xTo="30" yTo="0"  stroke="{stroke}"  />
+</s:Group>

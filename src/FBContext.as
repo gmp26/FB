@@ -5,6 +5,7 @@ package
 	
 	import org.maths.FB.models.Analyser;
 	import org.maths.FB.models.AppState;
+	import org.maths.FB.models.Scores;
 	import org.maths.FB.signals.GreyNumberSignal;
 	import org.maths.FB.signals.HideAllSignal;
 	import org.maths.FB.signals.NewProblemSignal;
@@ -14,22 +15,20 @@ package
 	import org.maths.FB.signals.RevealOneSignal;
 	import org.maths.FB.views.CompletedLevels;
 	import org.maths.FB.views.CompletedLevelsMediator;
-	import org.maths.FB.views.Home;
-	import org.maths.FB.views.HomeMediator;
 	import org.maths.FB.views.Intro1;
 	import org.maths.FB.views.Intro1Mediator;
 	import org.maths.FB.views.Intro2;
 	import org.maths.FB.views.Intro2Mediator;
 	import org.maths.FB.views.Level1;
 	import org.maths.FB.views.Level1Mediator;
-	import org.maths.FB.views.MainPanel;
-	import org.maths.FB.views.MainPanelMediator;
-	import org.maths.FB.views.SidePanel;
-	import org.maths.FB.views.SidePanelMediator;
+	//import org.maths.FB.views.MainPanel;
+	//import org.maths.FB.views.MainPanelMediator;
+	//import org.maths.FB.views.SidePanel;
+	//import org.maths.FB.views.SidePanelMediator;
 	import org.maths.FB.views.StartScreen;
 	import org.maths.FB.views.StartScreenMediator;
-	import org.maths.FB.views.TimesTable;
-	import org.maths.FB.views.TimesTableMediator;
+	//import org.maths.FB.views.TimesTable;
+	//import org.maths.FB.views.TimesTableMediator;
 	import org.robotlegs.base.ContextEvent;
 	import org.robotlegs.mvcs.Context;
 	import org.robotlegs.mvcs.SignalContext;
@@ -71,19 +70,20 @@ package
 			analyser = new Analyser();
 			injector.mapValue(Analyser, analyser);
 			
+			injector.mapSingleton(Scores);
+			
 			// Map commands
 			// signalCommandMap.mapSignalClass(StartupCompleteSignal, StartupCompleteCommand);
 			
 			// Map views
-			mediatorMap.mapView(MainPanel, MainPanelMediator);
-			mediatorMap.mapView(SidePanel, SidePanelMediator);
-			mediatorMap.mapView(TimesTable, TimesTableMediator);
+			//mediatorMap.mapView(MainPanel, MainPanelMediator);
+			//mediatorMap.mapView(SidePanel, SidePanelMediator);
+			//mediatorMap.mapView(TimesTable, TimesTableMediator);
 			mediatorMap.mapView(StartScreen, StartScreenMediator);
 			mediatorMap.mapView(Intro1, Intro1Mediator);
 			mediatorMap.mapView(Intro2, Intro2Mediator);
 			mediatorMap.mapView(CompletedLevels, CompletedLevelsMediator);
 			mediatorMap.mapView(Level1, Level1Mediator);
-			mediatorMap.mapView(Home, HomeMediator, Home);
 			mediatorMap.createMediator(contextView);
 			
 			

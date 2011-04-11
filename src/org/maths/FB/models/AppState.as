@@ -4,11 +4,7 @@ package org.maths.FB.models
 
 	public class AppState
 	{
-		/**
-		 * list of completed levels. by levelName. This should be persistent
-		 */
-		public var completedLevels:Object = {};
-
+		
 		/**
 		 * pixels per inch 
 		 */

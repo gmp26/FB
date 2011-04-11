@@ -22,7 +22,6 @@ package org.maths.FB.views
 	
 	import spark.components.Group;
 	import spark.components.Label;
-	import spark.components.ToggleButton;
 	
 	public class MainPanelMediator extends Mediator
 	{

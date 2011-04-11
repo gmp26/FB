@@ -8,8 +8,8 @@ package org.maths.FB.views
 	
 	import org.maths.FB.components.HeaderButton;
 	import org.maths.FB.components.Picker;
+	import org.maths.FB.components.TableButton;
 	import org.maths.FB.components.Tick;
-	import org.maths.FB.components.TouchFlare;
 	import org.maths.FB.models.AppState;
 	import org.robotlegs.mvcs.Mediator;
 	
@@ -29,6 +29,7 @@ package org.maths.FB.views
 		{
 			// inject common components into AbstractMediator
 			level = intro1;
+			levelName = "intro1";
 			content = intro1._content;
 			homeButton = intro1._homeButton;
 			skipButton = intro1._skipButton;
@@ -58,7 +59,9 @@ package org.maths.FB.views
 			intro1.h2.enabled = true;
 			intro1.product.enabled = true;
 
-			super.enableAll();
+			content.filters = [];
+			tryAgainButton.visible = false;
+			nextButton.visible = false;
 		}
 		
 		override protected function disableAll():void
@@ -67,8 +70,19 @@ package org.maths.FB.views
 			intro1.h2.enabled = false;
 			intro1.product.enabled = false;
 
-			super.disableAll();
+			content.filters = [blur];
+			
 		}
+		
+		override protected function productClicked(event:MouseEvent):void
+		{
+			var button:TableButton = event.currentTarget as TableButton;
+			button.enabled = false;
+			button.label = "28";
+			endGame(event);
+		}
+		
+
 		
 		override protected function populatePickerForHeader(picker:Picker, header:HeaderButton):void
 		{
@@ -125,5 +139,13 @@ package org.maths.FB.views
 		{
 			level.navigator.pushView(Intro2);			
 		}
+		
+		override protected function revealAll():void
+		{
+			intro1.h1.enabled = false;
+			intro1.h2.enabled = false;
+			intro1.product.enabled = false;
+		}
+		
 	}
 }

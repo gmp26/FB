@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
-		title="Levels">
+		title="Levels"
+		>
 	<fx:Script>
 		<![CDATA[
 			import org.maths.FB.components.Tick;
@@ -21,12 +22,15 @@
 		<s:Button id="homeButton" icon="@Embed('assets/home.png')" /> 
 	</s:navigationContent>
 	
-	<s:VGroup id="levels" width="100%" horizontalAlign="center" verticalCenter="0" gap="10">
-		<s:Button id="introButton" label="Intro" width="200" chromeColor="#0359A9"/>
-		<s:Button id="level1Button" label="Level 1" width="200" chromeColor="#8A03B6" enabled="true"/>
-		<s:Button id="level2Button" label="Level 2" width="200" chromeColor="#8A03B6" enabled="false"/>
-		<s:Button id="level3Button" label="Level 3" width="200" chromeColor="#8A03B6" enabled="false"/>
-		<s:Button id="level4Button" label="Level 4" width="200" chromeColor="#8A03B6" enabled="false"/>
-		<s:Button id="level5Button" label="Level 5" width="200" chromeColor="#8A03B6" enabled="false"/>
-	</s:VGroup>
+	<s:Group width="100%" top="40">
+		<s:TileGroup id="levels" horizontalCenter="0" horizontalAlign="left" 
+					 verticalGap="10" horizontalGap="10" orientation="columns">
+			<s:Button id="introButton" label="Intro" width="300" chromeColor="#0359A9"/>
+			<s:Button id="level1Button" label="Level 1" width="300" chromeColor="#8A03B6" enabled="true"/>
+			<s:Button id="level2Button" label="Level 2" width="300" chromeColor="#8A03B6" enabled="false"/>
+			<s:Button id="level3Button" label="Level 3" width="300" chromeColor="#8A03B6" enabled="false"/>
+			<s:Button id="level4Button" label="Level 4" width="300" chromeColor="#8A03B6" enabled="false"/>
+			<s:Button id="level5Button" label="Level 5" width="300" chromeColor="#8A03B6" enabled="false"/>
+		</s:TileGroup>
+	</s:Group>
 </s:View>

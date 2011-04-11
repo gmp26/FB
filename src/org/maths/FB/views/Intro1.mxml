@@ -31,14 +31,14 @@
 				<s:VGroup horizontalAlign="center" width="70%" gap="20" paddingLeft="20" paddingRight="0">
 					<s:VGroup horizontalAlign="center" width="100%">
 						<s:Label text="Each '?' hides a number"/>
-						<s:Label text="Can you find them?"/>
+						<s:Label text="Can you find them all?"/>
 					</s:VGroup>
 					<s:HGroup verticalAlign="middle" height="100">				
 						<components:HeaderButton id="h1" skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
 						<s:Label text="×" width="100%" textAlign="center" fontSize="48"/>				
 						<components:HeaderButton id="h2" skinClass = "org.maths.FB.skins.AltHeaderCellSkin" label="?" />
 						<s:Label text="=" fontSize="48"/>				
-						<s:ToggleButton id="product" skinClass="org.maths.FB.skins.ToggleCellSkin" label="28"/>
+						<components:TableButton id="product" label=""/>
 					</s:HGroup>
 				</s:VGroup>
 		

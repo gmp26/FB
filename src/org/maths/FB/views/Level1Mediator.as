@@ -8,8 +8,8 @@ package org.maths.FB.views
 	
 	import org.maths.FB.components.HeaderButton;
 	import org.maths.FB.components.Picker;
+	import org.maths.FB.components.TableButton;
 	import org.maths.FB.components.Tick;
-	import org.maths.FB.components.TouchFlare;
 	import org.maths.FB.models.Analyser;
 	import org.maths.FB.models.AppState;
 	import org.maths.FB.skins.ToggleCellSkin;
@@ -17,7 +17,6 @@ package org.maths.FB.views
 	
 	import spark.components.Button;
 	import spark.components.Label;
-	import spark.components.ToggleButton;
 	
 	public class Level1Mediator extends AbstractLevelMediator
 	{
@@ -36,6 +35,7 @@ package org.maths.FB.views
 			
 			// inject common components into AbstractMediator
 			level = screen;
+			levelName = "level1";
 			content = screen._content;
 			rowHeader = screen.rowHeader;
 			colHeader = screen.colHeader;
@@ -46,6 +46,8 @@ package org.maths.FB.views
 			checkButton = screen._checkButton;
 			nextButton = screen._nextButton;
 			tryAgainButton = screen._tryAgainButton;
+			min=2;
+			max=5;
 			
 			super.onRegister();
 			
@@ -56,17 +58,7 @@ package org.maths.FB.views
 		{
 			super.onRemove();
 		}
-		
-		override protected function enableAll():void
-		{
-			super.enableAll();
-		}
-		
-		override protected function disableAll():void
-		{
-			super.disableAll();
-		}
-		
+					
 		override protected function get isComplete():Boolean
 		{			
 			for(var i:int = 0; i < screen.rowHeader.numElements; i++) {
@@ -84,7 +76,7 @@ package org.maths.FB.views
 		override protected function endGame(event:MouseEvent=null):void
 		{
 			if(event != null) {
-				var b:ToggleButton = event.currentTarget as ToggleButton;
+				var b:TableButton = event.currentTarget as TableButton;
 				var x:int = screen.table.getElementIndex(b);
 				var col:int = x % cols;
 				var row:int = x / rows;
@@ -96,7 +88,7 @@ package org.maths.FB.views
 					screen.enough.visible = true;
 					screen.instruction.visible = false;
 					for(var i:int = 0; i < screen.table.numElements; i++) {
-						var t:ToggleButton = screen.table.getElementAt(i) as ToggleButton;
+						var t:TableButton = screen.table.getElementAt(i) as TableButton;
 						if(!t.selected) {
 							t.label = "";
 							t.enabled = false;
@@ -122,36 +114,44 @@ package org.maths.FB.views
 					return false;
 			}
 			
-			appState.completedLevels["level1"] = true;
+			scores.completeLevel("level1");
 			
 			return true;
 		}
 		
 		override protected function nextScreen(event:Event):void
 		{
-			level.navigator.pushView(Home);			
+			level.navigator.pushView(CompletedLevels);			
 		}
 		
 		private function newProblem():void
 		{
-			screen.colHeader.addElement(newHeader(4));		
-			screen.colHeader.addElement(newHeader(3));		
+			var val:int;
+			var rowHeadings:Array = [];
+			var colHeadings:Array = [];
 			
-			screen.rowHeader.addElement(newHeader(7));		
-			screen.rowHeader.addElement(newHeader(6));		
+			for(var i:int = 0; i < 4; i++) {
+				while(rowHeadings.indexOf(val = min + Math.floor((max-min + 1)*Math.random())) >= 0) {};
+				rowHeadings[i] = val;
+				screen.rowHeader.addElement(newHeader(val));
+			}
 
-			screen.table.addElement(newProduct(0,0));
-			screen.table.addElement(newProduct(0,1));
-			
-			screen.table.addElement(newProduct(1,0));
-			screen.table.addElement(newProduct(1,1));
-			
-			screen.validateNow();
+			for(var j:int = 0; j < 4; j++) {
+				while(colHeadings.indexOf(val = min + Math.floor((max-min + 1)*Math.random())) >= 0) {};
+				colHeadings[j] = val;
+				screen.colHeader.addElement(newHeader(val));
+			}	
+
+			for(i=0; i < 4; i++) {
+				for(j=0; j < 4; j++) {
+					screen.table.addElement(newProduct(i,j));
+				}
+			} 
 			
 			// set up the solution analyser
 			analyser = new Analyser();
-			analyser.setRowRange(rows, 2, 12);
-			analyser.setColRange(cols, 2, 12);
+			analyser.setRowRange(4, min, max);
+			analyser.setColRange(4, min, max);
 			//screen.unknowns.text = "Unknowns " + (analyser.solve() - appState.rows - appState.cols);
 		}
 		
@@ -166,21 +166,14 @@ package org.maths.FB.views
 			return h;
 		}
 		
-		private function newProduct(row:int, col:int):ToggleButton
+		private function newProduct(row:int, col:int):TableButton
 		{
-			var t:ToggleButton = new ToggleButton();
-			t.setStyle("skinClass", ToggleCellSkin);
-			//t.width = 96;
-			//t.height = 96;
-			var r:int = rowMultiplier(row);
-			var c:int = colMultiplier(col);
-			
-			if(isNaN(r)) t.label = "";
-			else if(isNaN(c)) t.label = "";
-			else t.label = (r*c).toString();
+			var t:TableButton = new TableButton();
+			t.row = row;
+			t.col = col;
+			t.label = "";
 			
 			t.addEventListener(MouseEvent.CLICK, productClicked);
-			
 			return t;
 		}
 		

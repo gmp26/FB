@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+    currentState="upAndSelected"
+	>
+	<fx:Metadata>[HostComponent("spark.components.ToggleButton")]</fx:Metadata>
+	<s:states>
+		<s:State name="upAndSelected"/>
+		<s:State name="overAndSelected"/>
+		<s:State name="downAndSelected"/>
+		<s:State name="disabledAndSelected"/>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Rect height="89" id="rect3" includeIn="disabled,disabledAndSelected,down,over,overAndSelected,up,upAndSelected" radiusX="10" width="89" x.disabled="2" x.disabledAndSelected="2" x.down="1.5" x.over="1.5" x.overAndSelected="1.5" x.up="1.5" x.upAndSelected="1.5" y.disabled="1" y.disabledAndSelected="1" y.down="0.5" y.over="0.5" y.overAndSelected="0.5" y.up="0.5" y.upAndSelected="0.5">
+		<s:fill>
+			<s:SolidColor color="#EEEEEE" color.down="#CCCCEE" color.over="#CDCBFF" color.overAndSelected="#CDCBFF"/>
+		</s:fill>
+		<s:filters>
+			<s:DropShadowFilter alpha="0.5" angle="45.0" angle.down="225" blurX="4.0" blurY="4.0" color="0x000000" distance="4.0" hideObject="false" includeIn="down,over,overAndSelected,up,upAndSelected" inner="false" knockout="false" quality="2" strength="1"/>
+			<s:GlowFilter alpha="1.0" blurX="6.0" blurY="6.0" color="0x5380d0" includeIn="down,over,overAndSelected,up,upAndSelected" inner="true" knockout="false" quality="2" strength="1"/>
+		</s:filters>
+		<s:stroke.over>
+			<s:SolidColorStroke caps="none" color="#FFC9CB" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke.over>
+		<s:stroke.overAndSelected>
+			<s:SolidColorStroke caps="none" color="#FFC9CB" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke.overAndSelected>
+		<s:stroke.down>
+			<s:SolidColorStroke caps="none" color="#FFC9CB" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke.down>
+		<s:stroke.upAndSelected>
+			<s:SolidColorStroke caps="none" color="#FFC9CB" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke.upAndSelected>
+		<s:stroke.up>
+			<s:SolidColorStroke caps="none" color="#FFC9CB" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke.up>
+	</s:Rect>
+	<s:Rect height="5" id="rect1" includeIn="disabled,down,over,overAndSelected,up,upAndSelected" radiusX="4" visible.disabled="false" width="79" x="6" y="4">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF" color.down="#DDDDDD"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect height="37" id="rect2" includeIn="disabled,down,over,overAndSelected,up,upAndSelected" radiusX="4" visible.disabled="false" width="79" x="6" y="49">
+		<s:fill>
+			<s:SolidColor color="#DDDDEE"/>
+		</s:fill>
+		<s:filters>
+			<s:BlurFilter blurX="12" blurY="12" quality="2"/>
+		</s:filters>
+	</s:Rect>
+	<s:RichText alpha.disabled="0.5" color="#2B4381" fontFamily="Arial" fontSize="50" height="44" id="labelDisplay" tabStops="S0 S50" text="99" textAlign="center" visible="false" visible.disabled="true" visible.down="true" visible.over="true" visible.up="true" width="91" x="0" y="25">
+	</s:RichText>
+	<s:Rect height="89" id="rect0" includeIn="downAndSelected" radiusX="10" width="89" x="1.5" y="0.5">
+		<s:fill>
+			<s:SolidColor color="#CCCCEE"/>
+		</s:fill>
+		<s:filters>
+			<s:DropShadowFilter alpha="0.5" angle="225" blurX="4.0" blurY="4.0" color="0x000000" distance="4.0" hideObject="false" inner="false" knockout="false" quality="2" strength="1"/>
+			<s:GlowFilter alpha="1.0" blurX="6.0" blurY="6.0" color="0x5380d0" inner="true" knockout="false" quality="2" strength="1"/>
+		</s:filters>
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#FFC9CB" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Rect>
+	<s:Rect height="5" id="rect4" includeIn="downAndSelected" radiusX="4" width="79" x="6" y="4">
+		<s:fill>
+			<s:SolidColor color="#DDDDDD"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect height="37" id="rect5" includeIn="downAndSelected" radiusX="4" width="79" x="6" y="49">
+		<s:fill>
+			<s:SolidColor color="#DDDDEE"/>
+		</s:fill>
+		<s:filters>
+			<s:BlurFilter blurX="12" blurY="12" quality="2"/>
+		</s:filters>
+	</s:Rect>
+	
+	<s:transitions>
+		<s:Transition autoReverse="true" fromState="*" toState="*">
+			<s:Parallel>
+				<s:Parallel target="{rect3}">
+					<s:Fade duration="500"/>
+				</s:Parallel>
+				<s:Parallel target="{rect1}">
+					<s:Fade duration="500"/>
+				</s:Parallel>
+				<s:Parallel target="{rect2}">
+					<s:Fade duration="500"/>
+				</s:Parallel>
+				<s:Parallel target="{labelDisplay}">
+					<s:Fade duration="500"/>
+				</s:Parallel>
+				<s:Parallel target="{rect0}">
+					<s:Fade duration="500"/>
+				</s:Parallel>
+				<s:Parallel target="{rect5}">
+					<s:Fade duration="500"/>
+				</s:Parallel>
+				<s:Parallel target="{rect4}">
+					<s:Fade duration="500"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+
+</s:Skin>

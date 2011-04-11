@@ -28,7 +28,8 @@
 			<s:SolidColor color="#999999"/>
 		</s:fill>
 	</s:Rect>
-	<s:Label x="0" y="7" kerning="on" width="96" height="91" fontFamily="CellFont" text="99" id="labelDisplay" textAlign="center"  verticalAlign="middle" color="#FFCB00" color.disabled="#FFFFCC" includeIn="disabled,downAndSelected,overAndSelected,upAndSelected,disabledAndSelected"/>
+	<!-- includeIn="disabled,downAndSelected,overAndSelected,upAndSelected,disabledAndSelected" -->
+	<s:Label x="0" y="7" kerning="on" width="96" height="91" fontFamily="CellFont" text="99" id="labelDisplay" textAlign="center"  verticalAlign="middle" color="#FFCB00" color.disabled="#FFFFCC" />
 	<s:Rect height="96" id="rect2" radiusX="30" width="96" x="0" y="0" visible.down="false" includeIn="disabled,down,over,overAndSelected,up,upAndSelected" visible.disabledAndSelected="false">
 		<s:fill>
 			<s:SolidColor color="#CCCCCC"/>
