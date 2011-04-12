@@ -184,8 +184,17 @@ package org.maths.FB.views
 		
 		
 		protected function get isComplete():Boolean
-		{
-			return false;
+		{			
+			for(var i:int = 0; i < rowHeader.numElements; i++) {
+				if((rowHeader.getElementAt(i) as HeaderButton).label == "?")
+					return false;
+			}
+			for(i = 0; i < colHeader.numElements; i++) {
+				if((colHeader.getElementAt(i) as HeaderButton).label == "?")
+					return false;
+			}
+			
+			return true;
 		}
 		
 		protected function productClicked(event:MouseEvent):void
@@ -206,6 +215,17 @@ package org.maths.FB.views
 				
 		protected function get isCorrect():Boolean
 		{
+			for(var i:int = 0; i < rowHeader.numElements; i++) {
+				var h:HeaderButton = rowHeader.getElementAt(i) as HeaderButton;
+				if(parseInt(h.label) != h.value)
+					return false;
+			}
+			for(i = 0; i < colHeader.numElements; i++) {
+				h = colHeader.getElementAt(i) as HeaderButton;
+				if(parseInt(h.label) != h.value)
+					return false;
+			}
+			
 			return true;
 		}
 		

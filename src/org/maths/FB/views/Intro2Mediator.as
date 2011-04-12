@@ -102,20 +102,12 @@ package org.maths.FB.views
 		
 		override protected function get isCorrect():Boolean
 		{
-			for(var i:int = 0; i < screen.rowHeader.numElements; i++) {
-				var h:HeaderButton = screen.rowHeader.getElementAt(i) as HeaderButton;
-				if(parseInt(h.label) != h.value)
-					return false;
+			if(super.isCorrect) {
+				scores.completeLevel("intro");
+				return true;
 			}
-			for(i = 0; i < screen.colHeader.numElements; i++) {
-				h = screen.colHeader.getElementAt(i) as HeaderButton;
-				if(parseInt(h.label) != h.value)
-					return false;
-			}
-			
-			scores.completeLevel("intro");
-			
-			return true;
+			else
+				return false;
 		}
 		
 		override protected function nextScreen(event:Event):void

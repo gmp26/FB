@@ -58,21 +58,7 @@ package org.maths.FB.views
 		{
 			super.onRemove();
 		}
-					
-		override protected function get isComplete():Boolean
-		{			
-			for(var i:int = 0; i < screen.rowHeader.numElements; i++) {
-				if((screen.rowHeader.getElementAt(i) as HeaderButton).label == "?")
-					return false;
-			}
-			for(i = 0; i < screen.colHeader.numElements; i++) {
-				if((screen.colHeader.getElementAt(i) as HeaderButton).label == "?")
-					return false;
-			}
-
-			return true;
-		}
-		
+							
 		override protected function endGame(event:MouseEvent=null):void
 		{
 			if(event != null) {
@@ -137,20 +123,12 @@ package org.maths.FB.views
 		
 		override protected function get isCorrect():Boolean
 		{
-			for(var i:int = 0; i < screen.rowHeader.numElements; i++) {
-				var h:HeaderButton = screen.rowHeader.getElementAt(i) as HeaderButton;
-				if(parseInt(h.label) != h.value)
-					return false;
+			if(super.isCorrect) {
+				scores.completeLevel("level1");
+				return true;
 			}
-			for(i = 0; i < screen.colHeader.numElements; i++) {
-				h = screen.colHeader.getElementAt(i) as HeaderButton;
-				if(parseInt(h.label) != h.value)
-					return false;
-			}
-			
-			scores.completeLevel("level1");
-			
-			return true;
+			else
+				return false;
 		}
 		
 		override protected function nextScreen(event:Event):void
@@ -167,18 +145,18 @@ package org.maths.FB.views
 			for(var i:int = 0; i < 4; i++) {
 				while(rowHeadings.indexOf(val = min + Math.floor((max-min + 1)*Math.random())) >= 0) {};
 				rowHeadings[i] = val;
-				screen.rowHeader.addElement(newHeader(val));
+				rowHeader.addElement(newHeader(val));
 			}
 
 			for(var j:int = 0; j < 4; j++) {
 				while(colHeadings.indexOf(val = min + Math.floor((max-min + 1)*Math.random())) >= 0) {};
 				colHeadings[j] = val;
-				screen.colHeader.addElement(newHeader(val));
+				colHeader.addElement(newHeader(val));
 			}	
 
 			for(i=0; i < 4; i++) {
 				for(j=0; j < 4; j++) {
-					screen.table.addElement(newProduct(i,j));
+					table.addElement(newProduct(i,j));
 				}
 			} 
 			
