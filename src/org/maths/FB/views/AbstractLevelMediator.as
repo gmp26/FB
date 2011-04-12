@@ -37,12 +37,15 @@ package org.maths.FB.views
 		public var rowHeader:Group;		
 		public var colHeader:Group;
 		public var table:TileGroup;
+		public var instruction:Group;
+		public var endNavigation:Group;
 		public var homeButton:Button
 		public var backButton:Button
 		public var skipButton:Button
 		public var checkButton:Button;
 		public var tryAgainButton:Button;
 		public var nextButton:Button;
+		
 		public var min:int = 2;
 		public var max:int = 12;
 		
@@ -89,7 +92,7 @@ package org.maths.FB.views
 			}
 			for(i = 0; i < table.numElements; i++) {
 				var b:TableButton = table.getElementAt(i) as TableButton;
-				if(b) b.enabled = false;
+				if(b && b.label=="") b.enabled = false;
 			}
 			content.filters = [blur];
 			
@@ -108,7 +111,8 @@ package org.maths.FB.views
 			
 			for(i = 0; i < table.numElements; i++) {
 				var b:TableButton = table.getElementAt(i) as TableButton;
-				if(b && b.label=="" && !b.selected) b.enabled = true;
+//				if(b && b.label=="" && !b.selected) b.enabled = true;
+				if(b && b.label=="") b.enabled = true;
 			}
 			
 			content.filters = [];
@@ -236,14 +240,17 @@ package org.maths.FB.views
 			content.filters=[];
 			TweenMan.addTween(checkButton, {time:0.3, bottom:-90});
 			if(isCorrect) {
-				nextButton.visible = true;
-				tryAgainButton.visible = false;
+				if(nextButton) nextButton.visible = true;
+				if(tryAgainButton) tryAgainButton.visible = false;
+				if(endNavigation) endNavigation.visible = true;
 				revealAll();
 			}
 			else {
-				nextButton.visible = false;
-				tryAgainButton.visible = true;
+				if(nextButton) nextButton.visible = false;
+				if(tryAgainButton) tryAgainButton.visible = true;
 			}
+			if(instruction) instruction.visible = false;
+			if(endNavigation) endNavigation.visible = true;
 		}
 
 		protected function revealAll():void
@@ -277,6 +284,8 @@ package org.maths.FB.views
 		protected function tryAgain(event:MouseEvent):void
 		{
 			enableAll();
+			instruction.visible = true;
+			endNavigation.visible = false;
 		}
 		
 		protected function rowMultiplier(i:int):int

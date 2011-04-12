@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:ToggleButton xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<s:Button xmlns:fx="http://ns.adobe.com/mxml/2009" 
 				xmlns:s="library://ns.adobe.com/flex/spark">
 	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:states>
-		<s:State name="upAndSelected"/>
+<!--		<s:State name="upAndSelected"/>
 		<s:State name="overAndSelected"/>
 		<s:State name="downAndSelected"/>
-		<s:State name="disabledAndSelected"/>
+		<s:State name="disabledAndSelected"/>-->
 		<s:State name="up"/>
 		<s:State name="over"/>
 		<s:State name="down"/>
@@ -25,4 +25,4 @@
 			}
 		]]>
 	</fx:Script>
-</s:ToggleButton>
+</s:Button>

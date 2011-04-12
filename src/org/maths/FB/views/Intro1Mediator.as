@@ -57,7 +57,7 @@ package org.maths.FB.views
 		{
 			intro1.h1.enabled = true;
 			intro1.h2.enabled = true;
-			intro1.product.enabled = true;
+			if(intro1.product.label == "") intro1.product.enabled = true;
 
 			content.filters = [];
 			tryAgainButton.visible = false;
@@ -127,7 +127,7 @@ package org.maths.FB.views
 		
 		override protected function get isComplete():Boolean
 		{
-			return (intro1.h1.label != "?" && intro1.h2.label != "?" && intro1.product.selected);
+			return (intro1.h1.label != "?" && intro1.h2.label != "?" && intro1.product.label != "");
 		}
 		
 		override protected function get isCorrect():Boolean

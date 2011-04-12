@@ -6,9 +6,9 @@
 	skinClass="org.maths.FB.skins.HeaderCellSkin"
 	label="?"
 	enabled="true"
-	selected="false" 
 	xmlns:components="org.maths.FB.components.*">
 	
+<!--	selected="false" -->
 	<fx:Script>
 		<![CDATA[
 			import org.maths.FB.skins.AltHeaderCellSkin;
@@ -51,10 +51,10 @@
 	</fx:Declarations>
 
 	<components:states>
-		<s:State name="upAndSelected"/>
+<!--		<s:State name="upAndSelected"/>
 		<s:State name="overAndSelected"/>
 		<s:State name="downAndSelected"/>
-		<s:State name="disabledAndSelected"/>
+		<s:State name="disabledAndSelected"/>-->
 		<s:State name="up"/>
 		<s:State name="over"/>
 		<s:State name="down"/>

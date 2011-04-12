@@ -40,6 +40,8 @@ package org.maths.FB.views
 			rowHeader = screen.rowHeader;
 			colHeader = screen.colHeader;
 			table = screen.table;
+			instruction = screen.instruction;
+			endNavigation = screen.endNavigation;
 			homeButton = screen._homeButton;
 			backButton = screen._backButton;
 			skipButton = screen._skipButton;
@@ -105,14 +107,13 @@ package org.maths.FB.views
 				
 				
 				if(unknowns == 0) {
-					screen.enough.visible = true;
+					screen.endNavigation.visible = true;
 					screen.instruction.visible = false;
-					for(var i:int = 0; i < screen.table.numElements; i++) {
+					for(i = 0; i < screen.table.numElements; i++) {
 						var t:TableButton = screen.table.getElementAt(i) as TableButton;
-						if(!t.selected) {
+						if(t.label != "") {
 							t.label = "";
 							t.enabled = false;
-							t.selected = true;
 						}
 					}
 				}
@@ -125,6 +126,7 @@ package org.maths.FB.views
 		{
 			if(super.isCorrect) {
 				scores.completeLevel("level1");
+				screen.endNavigation.visible = false;
 				return true;
 			}
 			else

@@ -59,7 +59,7 @@
 						<s:Label text="in the coloured boxes"  fontSize="20" />
 					</s:VGroup>
 					
-					<s:VGroup id="enough" horizontalAlign="center"  visible="false" width="100%">
+					<s:VGroup id="endNavigation" horizontalAlign="center"  visible="false" width="100%">
 						<s:Label text="That's enough!" />
 						<s:Button id="_nextButton" label="ready to go!" icon="{Tick}" visible="false" fontSize="40" chromeColor="0" />
 						<s:Button id="_tryAgainButton" label="try again!" visible="false" fontSize="30" chromeColor="0" />

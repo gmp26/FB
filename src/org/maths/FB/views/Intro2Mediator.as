@@ -40,6 +40,8 @@ package org.maths.FB.views
 			rowHeader = screen.rowHeader;
 			colHeader = screen.colHeader;
 			table = screen.table;
+			instruction = screen.instruction;
+			endNavigation = screen.endNavigation;
 			
 			homeButton = screen._homeButton;
 			backButton = screen._backButton;
@@ -76,7 +78,7 @@ package org.maths.FB.views
 		{
 			if(event != null) {
 				var b:TableButton = event.currentTarget as TableButton;
-				var x:int = screen.table.getElementIndex(b);
+				var x:int = table.getElementIndex(b);
 				var col:int = x % cols;
 				var row:int = x / rows;
 				analyser.addReveal(row, col, parseInt(b.label));
@@ -84,14 +86,13 @@ package org.maths.FB.views
 				analyser.solve();
 				var unknowns:int = analyser.solve() - rows - cols;
 				if(unknowns == 0) {
-					screen.enough.visible = true;
+					screen.endNavigation.visible = true;
 					screen.instruction.visible = false;
 					for(var i:int = 0; i < screen.table.numElements; i++) {
 						var t:TableButton = screen.table.getElementAt(i) as TableButton;
-						if(!t.selected) {
+						if(t.label != "") {
 							t.label = "";
 							t.enabled = false;
-							t.selected = true;
 						}
 					}
 				}
