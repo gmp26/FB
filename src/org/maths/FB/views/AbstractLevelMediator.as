@@ -105,9 +105,10 @@ package org.maths.FB.views
 				h = (colHeader.getElementAt(i) as HeaderButton);
 				h.enabled = true;
 			}
+			
 			for(i = 0; i < table.numElements; i++) {
 				var b:TableButton = table.getElementAt(i) as TableButton;
-				if(b && b.label=="") b.enabled = true;
+				if(b && b.label=="" && !b.selected) b.enabled = true;
 			}
 			
 			content.filters = [];
@@ -229,7 +230,7 @@ package org.maths.FB.views
 		{
 			for(var i:int=0; i < rowHeader.numElements; i++) {
 				for(var j:int = 0; j < colHeader.numElements; j++) {
-					var t:TableButton = table.getElementAt(i + j*colHeader.numElements) as TableButton;
+					var t:TableButton = table.getElementAt(i*rows + j) as TableButton;
 					t.label = (rowMultiplier(i) * colMultiplier(j)).toString();
 				}
 			}

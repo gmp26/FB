@@ -53,10 +53,9 @@
 				
 				<s:Group width="100%">
 					<s:VGroup id="instruction" horizontalCenter="0" horizontalAlign="center" >
-						<s:Label text="Tap on as many black" fontSize="40" />
-						<s:Label text="boxes as you need to"  fontSize="40" />
-						<s:Label text="find the numbers in"  fontSize="40" />
-						<s:Label text="the coloured boxes."  fontSize="40" />
+						<s:Label text="When a black spot appears" fontSize="40" />
+						<s:Label text="you should be able to fix"  fontSize="40" />
+						<s:Label text="the number in that box"  fontSize="40" />
 					</s:VGroup>
 					
 					<s:VGroup id="enough" horizontalAlign="center"  visible="false" width="100%">

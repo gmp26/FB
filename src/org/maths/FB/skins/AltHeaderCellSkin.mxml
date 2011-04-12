@@ -33,5 +33,10 @@
 			<s:DropShadowFilter alpha="1" angle="45.0" blurX="4.0" blurY="4.0" color="#666666" distance="0" hideObject="false" inner="true" knockout="true" quality="2" strength="3"/>
 		</s:filters>
 	</s:Rect>
+	<s:Ellipse id="gremlin" width="10" height="10" visible="false" x="20" y="20">
+		<s:fill>
+			<s:SolidColor color="0x000000"/>
+		</s:fill>
+	</s:Ellipse>	
 
 </s:Skin>

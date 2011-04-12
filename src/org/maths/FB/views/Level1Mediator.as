@@ -84,6 +84,40 @@ package org.maths.FB.views
 				analyser.solve();
 				analyser.solve();
 				var unknowns:int = analyser.solve() - rows - cols;
+				
+				for(var i:int = 0; i < table.numElements; i++) {
+					var tb:TableButton = table.getElementAt(i) as TableButton;
+					//if(tb == null) continue;
+					var rh:HeaderButton = rowHeader.getElementAt(tb.row) as HeaderButton;
+					if(analyser.rowPossibles[tb.row].length > 1) continue;
+					rh.showGremlin(true);
+					var ch:HeaderButton = colHeader.getElementAt(tb.col) as HeaderButton;
+					if(analyser.colPossibles[tb.col].length > 1) continue;
+					ch.showGremlin(true);
+				}
+				
+				/*
+				// trace what can be deduced 
+				for(i=0; i < rows; i++) {
+					var possibles:Vector.<int> = analyser.rowPossibles[i];
+					var s:String = "row["+i+"]=";
+					for(var j:int=0; j < possibles.length; j++) {
+						s += possibles[j]+" ";
+					}
+					trace(s);
+				}
+				
+				for(i=0; i < cols; i++) {
+					possibles = analyser.colPossibles[i];
+					s = "col["+i+"]=";
+					for(j=0; j < possibles.length; j++) {
+						s += possibles[j]+" ";
+					}
+					trace(s);
+				}
+				*/
+				
+				
 				if(unknowns == 0) {
 					screen.enough.visible = true;
 					screen.instruction.visible = false;

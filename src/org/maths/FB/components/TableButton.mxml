@@ -8,4 +8,16 @@
 		<fx:int id="row">0</fx:int>
 		<fx:int id="col">0</fx:int>
 	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import org.maths.FB.skins.ToggleCellSkin;
+			public function showGremlin(b:Boolean):void
+			{
+				if(skin == null) return;
+				(skin as ToggleCellSkin).gremlin.visible = b;
+			}
+		]]>
+	</fx:Script>
+	
 </s:ToggleButton>

@@ -31,6 +31,17 @@
 			{
 				return (skin is AltHeaderCellSkin);
 			}
+
+			public function showGremlin(b:Boolean):void
+			{
+				if(skin == null) return;
+				if(isGreen) {
+					(skin as HeaderCellSkin).gremlin.visible = b;
+				}
+				else {
+					(skin as AltHeaderCellSkin).gremlin.visible = b;
+				}
+			}
 		]]>
 	</fx:Script>
 	
