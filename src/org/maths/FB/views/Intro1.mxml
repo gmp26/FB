@@ -28,26 +28,26 @@
 		<s:Group id="_content" width="100%" height="100%">
 			<components:OGroup id="orientable" horizontalCenter="0" horizontalAlign="center" verticalAlign="middle" top="40" width="100%" gap="20">
 		
-				<s:VGroup horizontalAlign="center" width="70%" gap="20" paddingLeft="20" paddingRight="0">
-					<s:VGroup horizontalAlign="center" width="100%">
-						<s:Label text="Each '?' hides a number"/>
-						<s:Label text="Can you find them all?"/>
+				<s:VGroup horizontalAlign="center" gap="20">
+					<s:VGroup horizontalAlign="center">
+						<components:MultilineLabel 
+							text="Each '?' hides a number. Can you find them both?"/>
 					</s:VGroup>
-					<s:HGroup verticalAlign="middle" height="100">				
+					<s:HGroup verticalAlign="middle" width="450" height="150" paddingLeft="50" paddingRight="50">				
 						<components:HeaderButton id="h1" skinClass = "org.maths.FB.skins.HeaderCellSkin" label="?" />
-						<s:Label text="×" width="100%" textAlign="center" fontSize="48"/>				
+						<s:Label text="×"  textAlign="center" fontSize="60"/>				
 						<components:HeaderButton id="h2" skinClass = "org.maths.FB.skins.AltHeaderCellSkin" label="?" />
 						<s:Label text="=" fontSize="48"/>				
 						<components:TableButton id="product" label=""/>
 					</s:HGroup>
 				</s:VGroup>
 		
-				<s:VGroup  horizontalAlign="center" width="40%" verticalAlign="middle" >
-					<s:Label text="Tap on the black button"/>
-					<s:Label text="to reveal a clue"/>
+				<s:VGroup  horizontalAlign="center"  verticalAlign="middle" >
+					<components:MultilineLabel 
+						text="Tap on the black button to reveal a clue. In later levels try to use as few clues as you can, and set the coloured numbers as soon as you can."/>
 					<s:Group height="20"/>
-					<s:Label text="Tap on a coloured"/>
-					<s:Label text="button to pick a number."/>
+					<components:MultilineLabel 
+						text="Tap on a coloured button to set its number."/>
 				</s:VGroup>
 				
 			</components:OGroup>

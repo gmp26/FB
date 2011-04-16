@@ -7,7 +7,6 @@ package org.maths.FB.views
 	import flash.utils.setTimeout;
 	
 	import org.maths.FB.components.HeaderButton;
-	import org.maths.FB.components.Picker;
 	import org.maths.FB.components.TableButton;
 	import org.maths.FB.components.Tick;
 	import org.maths.FB.models.Analyser;
@@ -23,7 +22,7 @@ package org.maths.FB.views
 		[Inject]
 		public var screen:Intro2;
 		
-		private var analyser:Analyser;
+		//private var analyser:Analyser;
 					
 		public function Intro2Mediator()
 		{
@@ -32,6 +31,7 @@ package org.maths.FB.views
 		
 		override public function onRegister():void
 		{
+			solved = false;
 			
 			// inject common components into AbstractMediator
 			level = screen;
@@ -50,9 +50,10 @@ package org.maths.FB.views
 			nextButton = screen._nextButton;
 			tryAgainButton = screen._tryAgainButton;
 			
-			super.onRegister();
+			if(screen.destructionPolicy=="auto")
+				newProblem();
 			
-			newProblem();
+			super.onRegister();
 		}
 		
 		override public function onRemove():void
@@ -60,7 +61,7 @@ package org.maths.FB.views
 			super.onRemove();
 		}
 		
-		override protected function get isComplete():Boolean
+/*		override protected function get isComplete():Boolean
 		{			
 			for(var i:int = 0; i < screen.rowHeader.numElements; i++) {
 				if((screen.rowHeader.getElementAt(i) as HeaderButton).label == "?")
@@ -73,7 +74,8 @@ package org.maths.FB.views
 
 			return true;
 		}
-		
+*/		
+/*
 		override protected function endGame(event:MouseEvent=null):void
 		{
 			if(event != null) {
@@ -82,23 +84,28 @@ package org.maths.FB.views
 				var col:int = x % cols;
 				var row:int = x / rows;
 				analyser.addReveal(row, col, parseInt(b.label));
-				analyser.solve();
-				analyser.solve();
-				var unknowns:int = analyser.solve() - rows - cols;
-				if(unknowns == 0) {
-					screen.endNavigation.visible = true;
-					screen.instruction.visible = false;
-					for(var i:int = 0; i < screen.table.numElements; i++) {
-						var t:TableButton = screen.table.getElementAt(i) as TableButton;
-						if(t.label != "") {
-							t.label = "";
-							t.enabled = false;
-						}
-					}
+			}
+			analyser.solve();
+			analyser.solve();
+			var unknowns:int = analyser.solve() - rows - cols;
+			if(unknowns == 0) {
+				solved = true;
+				screen.endNavigation.visible = true;
+				screen.instruction.visible = false;
+				for(var i:int = 0; i < screen.table.numElements; i++) {
+					var t:TableButton = screen.table.getElementAt(i) as TableButton;
+					t.enabled = false;
 				}
 			}
 			
 			super.endGame(event);
+		}
+*/
+		
+		override protected function newSpotDetected():void
+		{
+			trace("new spot detected");
+			
 		}
 		
 		override protected function get isCorrect():Boolean

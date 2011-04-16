@@ -12,6 +12,7 @@ package org.maths.FB.models
 		// initial possibilities		
 		public var rowPossibles:Vector.<Vector.<int>>;
 		public var colPossibles:Vector.<Vector.<int>>;
+		public var solved:Boolean = false;
 		
 		public function setRowRange(rows:int, from:int, to:int):void
 		{
@@ -96,6 +97,9 @@ package org.maths.FB.models
 			for(var c:int = 0; c < colPossibles.length; c++) {
 				unknowns += colPossibles[c].length;
 			} 
+			
+			if(unknowns == rowPossibles.length + colPossibles.length)
+				solved = true;
 			
 			return unknowns;
 		}

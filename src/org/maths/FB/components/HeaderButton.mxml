@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<components:TouchableButton 
+<s:Button 
 	xmlns:fx="http://ns.adobe.com/mxml/2009" 
 	xmlns:s="library://ns.adobe.com/flex/spark" 
 	xmlns:mx="library://ns.adobe.com/flex/mx"
 	skinClass="org.maths.FB.skins.HeaderCellSkin"
 	label="?"
 	enabled="true"
-	xmlns:components="org.maths.FB.components.*">
+	>
 	
 <!--	selected="false" -->
 	<fx:Script>
@@ -32,7 +32,17 @@
 				return (skin is AltHeaderCellSkin);
 			}
 
-			public function showGremlin(b:Boolean):void
+			public function get spot():Boolean
+			{
+				if(skin == null) return false;
+				if(isGreen) {
+					return (skin as HeaderCellSkin).gremlin.visible;
+				}
+				else {
+					return (skin as AltHeaderCellSkin).gremlin.visible;
+				}
+			}
+			public function set spot(b:Boolean):void
 			{
 				if(skin == null) return;
 				if(isGreen) {
@@ -50,15 +60,11 @@
 		<fx:int id="value">0</fx:int>
 	</fx:Declarations>
 
-	<components:states>
-<!--		<s:State name="upAndSelected"/>
-		<s:State name="overAndSelected"/>
-		<s:State name="downAndSelected"/>
-		<s:State name="disabledAndSelected"/>-->
+	<s:states>
 		<s:State name="up"/>
 		<s:State name="over"/>
 		<s:State name="down"/>
 		<s:State name="disabled"/>
-	</components:states>
+	</s:states>
 
-</components:TouchableButton>
+</s:Button>

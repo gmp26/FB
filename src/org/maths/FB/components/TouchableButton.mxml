@@ -6,10 +6,6 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:states>
-<!--		<s:State name="upAndSelected"/>
-		<s:State name="overAndSelected"/>
-		<s:State name="downAndSelected"/>
-		<s:State name="disabledAndSelected"/>-->
 		<s:State name="up"/>
 		<s:State name="over"/>
 		<s:State name="down"/>

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009">
-	<fx:Metadata>[HostComponent("spark.components.ToggleButton")]</fx:Metadata>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		cacheAsBitmap="true"
+		>
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
 	<s:states>
 		<s:State name="up"/>
 		<s:State name="over"/>
 		<s:State name="down"/>
 		<s:State name="disabled"/>
-		<s:State name="upAndSelected"/>
-		<s:State name="overAndSelected"/>
-		<s:State name="downAndSelected"/>
-		<s:State name="disabledAndSelected"/>
 	</s:states>
-	<s:Rect height="96" radiusX="30" width="96" x="0" y="0" id="rect3" alpha.disabled="0.5" alpha.disabledAndSelected="0.5">
+	<s:Rect height="96" radiusX="30" width="96" x="0" y="0" id="rect3" alpha.disabled="0.7">
 		<s:fill>
 			<s:SolidColor color="#44CCEE"/>
 		</s:fill>
@@ -19,13 +17,13 @@
 			<s:GlowFilter includeIn="up" blurX="6.0" blurY="6.0" color="#FFFFFF" inner="false" strength="1" alpha="1.0" quality="2" knockout="false"/>
 		</s:filters>
 	</s:Rect>
-	<s:Rect alpha="0.4" height="48" id="rect1" radiusX="30" width="88" x="4" y="5" visible.down="false" includeIn="disabled,down,over,overAndSelected,up,upAndSelected">
+	<s:Rect alpha="0.4" height="48" id="rect1" radiusX="30" width="88" x="4" y="5" includeIn="over,up">
 		<s:fill>
 			<s:SolidColor color="#66FFFF"/>
 		</s:fill>
 	</s:Rect>
-	<s:Label x="0" y="7" kerning="on" fontSize="48" width="96" height="91" fontFamily="CellFont" text="99" id="labelDisplay" textAlign="center"  verticalAlign="middle" color="#000000" includeIn="disabled,disabledAndSelected,down,downAndSelected,over,overAndSelected,up,upAndSelected"/>
-	<s:Rect height="96" id="rect2" radiusX="30" width="96" x="0" y="0" visible.down="false" includeIn="disabled,disabledAndSelected,down,over,overAndSelected,up,upAndSelected" visible.disabledAndSelected="false">
+	<s:Label x="0" y="7" kerning="on" fontSize="48" width="96" height="91" fontFamily="CellFont" text="99" id="labelDisplay" textAlign="center"  verticalAlign="middle" color="#000000"/>
+	<s:Rect height="96" id="rect2" radiusX="30" width="96" x="0" y="0" includeIn="over,up">
 		<s:fill>
 			<s:SolidColor color="#ffffff"/>
 		</s:fill>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:components="org.maths.FB.components.*"
+		 title="Pick a number"
+		 >
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:SolidColor id="backdrop" color="0x000000" alpha="0.5"/>
+	</fx:Declarations>
+
+	<s:navigationContent>
+		<s:Button id="backButton" label="back"/> 
+	</s:navigationContent>
+	
+	<s:filters>
+		<s:GlowFilter blurX="20" blurY="20" color="0xCCCCCC" quality="2" />
+	</s:filters>
+	
+	<s:Rect width="100%" height="100%" fill="{backdrop}" />
+
+	<components:ScaledGroup id="scaler" width="90%" height="90%" horizontalCenter="0" verticalCenter="0">
+		<components:OGroup verticalAlign="middle" horizontalAlign="center" gap="20">
+
+			<s:TileGroup id="choices" verticalGap="10" horizontalGap="10"/>
+			<s:VGroup horizontalAlign="center">
+				<s:Group height="20"/>
+				<s:Label id="message" lineBreak="toFit" width="300" maxDisplayedLines="-1" text="Each number can appear in only one header, but you may steal one that is already in use if you change your mind" />
+				<s:Group height="20"/>
+				<s:Button id="cancelButton" label="cancel"/>
+			</s:VGroup>
+			
+
+		</components:OGroup>
+	</components:ScaledGroup>
+
+</s:View>

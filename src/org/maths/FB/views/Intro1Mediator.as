@@ -11,6 +11,7 @@ package org.maths.FB.views
 	import org.maths.FB.components.TableButton;
 	import org.maths.FB.components.Tick;
 	import org.maths.FB.models.AppState;
+	import org.maths.FB.models.PickerData;
 	import org.robotlegs.mvcs.Mediator;
 	
 	import spark.components.Button;
@@ -19,7 +20,7 @@ package org.maths.FB.views
 	{
 		[Inject]
 		public var intro1:Intro1;
-					
+		
 		public function Intro1Mediator()
 		{
 			super();
@@ -79,14 +80,24 @@ package org.maths.FB.views
 			var button:TableButton = event.currentTarget as TableButton;
 			button.enabled = false;
 			button.label = "28";
-			endGame(event);
+			popupCheckButton(event);
 		}
 		
+		override protected function headerClicked(event:MouseEvent):void
+		{
+			disableAll();
+			populatePickerDataForHeader(event.currentTarget as HeaderButton);
+			popupPicker();
+		}
 
 		
-		override protected function populatePickerForHeader(picker:Picker, header:HeaderButton):void
+		override protected function populatePickerDataForHeader(header:HeaderButton):void
 		{
-			for(var i:int = 1; i <= 12; i++) {
+			pickerData.headerButton = header;
+			pickerData.buttonLabels = new Vector.<String>;
+			pickerData.pickerMessage = "Notice that different colour buttons offer different choices. In this case blue choices are not the same as green choices.";
+			
+			for(var i:int = 2; i <= 12; i++) {
 				
 				var green:Boolean = header.isGreen;
 				
@@ -96,33 +107,16 @@ package org.maths.FB.views
 				if(i > 1 && !green && i % 2 == 1)
 					continue;
 				
-				var button:HeaderButton = new HeaderButton();
-				if(green)
-					button.isGreen = true;
-				else
-					button.isGreen = false;
-				
-				if(i == 1) 
-					button.label = "?"
-				else
-					button.label = i.toString();
-				
-				picker.choices.addElement(button);
-				var f:Function;
-				button.addEventListener(MouseEvent.CLICK, f = function(event:MouseEvent):void {
-					button.removeEventListener(MouseEvent.CLICK, f);
-					
-					handlePickerChoice(picker, header, event.currentTarget as HeaderButton);
-					closePicker(picker);
-				});
+				pickerData.buttonLabels.push(i.toString());
 			}			
 		}
 		
 		// override in subclasses if you need something different
-		override protected function handlePickerChoice(picker:Picker, header:HeaderButton, pickedButton:HeaderButton):void
+		override protected function handlePickerChoice(header:HeaderButton, pickedLabel:String):void
 		{
-			var number:int = parseInt(pickedButton.label);
-			header.label = isNaN(number) ? "?" : pickedButton.label;			
+			var number:int = parseInt(pickedLabel);
+			header.label = isNaN(number) ? "?" : pickedLabel;
+			popupCheckButton();
 		}
 		
 		override protected function get isComplete():Boolean

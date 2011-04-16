@@ -33,11 +33,11 @@
 	
 	<components:ScaledGroup width="100%" height="100%">
 		
-		<s:Group id="_content" width="100%" height="100%" horizontalCenter="0">
+		<s:Group id="_content" width="100%" height="100%">
 			<components:OGroup id="orientable" horizontalCenter="0" horizontalAlign="center" verticalAlign="middle" top="40" width="100%" gap="20">
 		
-				<s:Group width="100%" horizontalCenter="0">
-					<s:VGroup gap="15" paddingLeft="20">
+				<s:Group width="100%">
+					<s:VGroup gap="15">
 						<s:HGroup gap="10" verticalAlign="middle">
 							<s:Label text="×" textAlign="center" fontSize="60" width="96" />
 							<s:HGroup id="colHeader" gap="15">
@@ -52,14 +52,12 @@
 				</s:Group>
 				
 				<s:Group width="100%">
-					<s:VGroup id="instruction" horizontalCenter="0" horizontalAlign="center" >
-						<s:Label text="When a black spot appears" fontSize="40" />
-						<s:Label text="you should be able to fix"  fontSize="40" />
-						<s:Label text="the number in that box"  fontSize="40" />
-					</s:VGroup>
+					<components:MultilineLabel id="instruction"
+											   text="Tap on a black button to reveal a clue." width="100%"/>
+
 					
 					<s:VGroup id="endNavigation" horizontalAlign="center"  visible="false" width="100%">
-						<s:Button id="_nextButton" label="well done!" icon="{Tick}" visible="false" fontSize="30" chromeColor="0" />
+						<s:Button id="_nextButton" label="Great! " icon="{Tick}" visible="false" fontSize="30" chromeColor="0" />
 						<s:Button id="_tryAgainButton" label="try again!" visible="false" fontSize="30" chromeColor="0" />
 					</s:VGroup>					
 				</s:Group>
