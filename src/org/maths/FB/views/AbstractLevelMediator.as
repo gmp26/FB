@@ -6,6 +6,8 @@ package org.maths.FB.views
 	import flash.events.MouseEvent;
 	import flash.events.TouchEvent;
 	import flash.filters.BlurFilter;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
 	import flash.utils.setTimeout;
 	
 	import mx.events.FlexEvent;
@@ -114,7 +116,7 @@ package org.maths.FB.views
 				var b:TableButton = table.getElementAt(i) as TableButton;
 				if(b && b.label=="") b.enabled = false;
 			}
-			content.filters = [blur];
+			//content.filters = [blur];
 			
 		}
 		
@@ -148,8 +150,16 @@ package org.maths.FB.views
 			popupPicker(picker);
 		}
 */	
+		
+		[Embed(source="assets/slider.mp3")]
+		public var sndCls:Class;
+		
+		public var snd:Sound = new sndCls() as Sound; 
+		public var sndChannel:SoundChannel;
+		
 		protected function headerClicked(event:MouseEvent):void
 		{
+			sndChannel=snd.play();
 			disableAll();
 			populatePickerDataForHeader(event.currentTarget as HeaderButton);
 			popupPicker();
@@ -192,7 +202,7 @@ package org.maths.FB.views
 			level.destructionPolicy="none";
 			level.addEventListener(FlexEvent.VIEW_ACTIVATE, viewActivated);
 			level.navigator.pushView(PickerView);
-			content.filters = [blur];
+			//content.filters = [blur];
 		}
 		
 		protected function viewActivated(event:FlexEvent):void
@@ -254,6 +264,7 @@ package org.maths.FB.views
 		
 		protected function productClicked(event:MouseEvent):void
 		{
+			sndChannel=snd.play();
 			var button:TableButton = event.currentTarget as TableButton;
 			button.enabled = false;
 			button.label = (rowMultiplier(button.row) * colMultiplier(button.col)).toString();
@@ -364,7 +375,7 @@ package org.maths.FB.views
 		{
 			disableAll();
 			// but don't blur this time
-			content.filters=[];
+			// content.filters=[];
 			TweenMan.addTween(checkButton, {time:0.3, bottom:-90});
 			if(isCorrect) {
 				if(nextButton) nextButton.visible = true;

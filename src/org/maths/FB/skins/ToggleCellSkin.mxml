@@ -14,9 +14,11 @@
 		<s:fill>
 			<s:SolidColor color="#000000"/>
 		</s:fill>
+		<!--
 		<s:filters>
 			<s:GlowFilter includeIn="up" blurX="6.0" blurY="6.0" color="0x5380d0" inner="false" strength="1" alpha="1.0" quality="2" knockout="false"/>
 		</s:filters>
+		-->
 	</s:Rect>
 	<s:Rect alpha="0.4" height="48" id="rect1" radiusX="30" width="88" x="4" y="5" includeIn="over,up">
 		<s:fill>
@@ -25,6 +27,7 @@
 	</s:Rect>
 	<s:Label id="labelDisplay" x="0" y="7" width="96" height="91" color="#FFCB00" color.disabled="#FFDE00"
 			 fontFamily="CellFont" kerning="on" text="99" textAlign="center" verticalAlign="middle" />
+<!--
 	<s:Rect height="96" id="rect2" radiusX="30" width="96" x="0" y="0" includeIn="over,up">
 		<s:fill>
 			<s:SolidColor color="#CCCCCC"/>
@@ -32,5 +35,6 @@
 		<s:filters>
 			<s:DropShadowFilter alpha="1" angle="45.0" blurX="4.0" blurY="4.0" color="#666666" distance="0" hideObject="false" inner="true" knockout="true" quality="2" strength="3"/>
 		</s:filters>
-	</s:Rect>		
+	</s:Rect>
+-->
 </s:Skin>

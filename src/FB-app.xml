@@ -184,6 +184,11 @@
 		&lt;!-- See the Adobe AIR documentation for more information about setting Google Android permissions --&gt;
 		&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
 	&lt;/manifest&gt;
+
+	&lt;manifest&gt;
+		&lt;!-- See the Adobe AIR documentation for more information about setting Google Android permissions --&gt;
+		&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+	&lt;/manifest&gt;
 <![CDATA[
 	<manifest>
 		<!-- See the Adobe AIR documentation for more information about setting Google Android permissions -->

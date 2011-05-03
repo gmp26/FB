@@ -13,10 +13,11 @@
 		<s:Button id="backButton" label="back"/> 
 	</s:navigationContent>
 	
+<!--
 	<s:filters>
 		<s:GlowFilter blurX="20" blurY="20" color="0xCCCCCC" quality="2" />
 	</s:filters>
-	
+-->	
 	<s:Rect width="100%" height="100%" fill="{backdrop}" />
 
 	<components:ScaledGroup id="scaler" width="90%" height="90%" horizontalCenter="0" verticalCenter="0">

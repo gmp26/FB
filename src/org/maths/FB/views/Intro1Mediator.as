@@ -71,7 +71,7 @@ package org.maths.FB.views
 			intro1.h2.enabled = false;
 			intro1.product.enabled = false;
 
-			content.filters = [blur];
+			//content.filters = [blur];
 			
 		}
 		
